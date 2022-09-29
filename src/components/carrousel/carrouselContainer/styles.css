@@ -1,0 +1,11 @@
+.carrousel {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+svg {
+    height: 30px;
+    cursor: pointer;
+}

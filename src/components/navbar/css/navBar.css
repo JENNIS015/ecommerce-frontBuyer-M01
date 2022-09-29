@@ -1,0 +1,58 @@
+.Navbar ul li a {
+  color: inherit;
+  text-decoration: none;
+  padding: 0 0.25rem;
+  letter-spacing: 0.2rem;
+  position: relative;
+}
+
+.Navbar ul li a:before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transition: all 0.3s ease-out;
+} 
+
+
+
+ .Navbar {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  background-color: var(--color-menu);
+}
+
+.Navbar h2 {
+  padding: 0.25rem 0.75rem;
+  font-size: 2.5rem;
+  color: var(--color-oscuro);
+  background: var(--color-logo);
+  position: relative;
+  transition: all 0.3s ease-in-out;
+} 
+.menuEstandar {
+  color: var(--color-blanco);
+}
+nav {
+  background-color: #150c7b !important;
+}
+nav ul a {
+  font-size: 1.1rem;
+}
+.portada {
+  max-width: 100%;
+  object-fit: cover;
+  max-height: 300px;
+}
+
+.collapsible{
+  padding: 0 12px!important;
+  font-weight: 600;
+}
+
+.mayuscula{
+  text-transform: uppercase;
+}

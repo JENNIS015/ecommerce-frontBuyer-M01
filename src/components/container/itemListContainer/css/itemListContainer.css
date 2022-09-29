@@ -1,0 +1,71 @@
+.detalle {
+  width: 100%;
+  background-color: #dddddd;
+  color: #0c1d25;
+  font-weight: 800;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.card .card-image img {
+  max-width: 100%;
+  height: 20vw;
+  object-fit: cover;
+  padding: 5px;
+}
+
+.card .card-title {
+  font-size: 12px !important;
+}
+
+.card .card-content {
+  padding: 5px;
+}
+.prod-price span {
+  color: #150c7b;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.categoriaTitle {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 26px;
+  line-height: 1.15;
+  letter-spacing: -0.35px;
+  padding: 0px;
+  margin-bottom: 0px;
+  text-align: center;
+}
+
+.resultadosCantidad {
+  text-align: center;
+}
+
+.home {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.home_panelList-wrap,
+.home_penel-wrap,
+.home_list-wrap {
+  overflow-y: auto;
+}
+.home_panelList-wrap {
+  display: flex;
+  flex: 1;
+}
+
+.home_penel-wrap {
+  flex-basis: 280px;
+  padding:1rem
+}
+
+.home_list-wrap {
+  flex: 1;
+  padding:1rem
+}
