@@ -2,7 +2,8 @@ import React from "react";
 import { useCartContext } from "../../context/CartContext";
 import { Link } from "react-router-dom";
 import {baseURL} from "../../config/config"
-
+ 
+import styles from "./css/cart.module.css";
 const CartItem = (prod)=> {
   const { formatNumber, deleteItem } = useCartContext();
 
@@ -14,7 +15,7 @@ const CartItem = (prod)=> {
         <td>
           <img
             src={baseURL + "/uploads/" + urlImagen}
-            className="cart"
+            className={styles.img}
             alt={productos.nombre}
           />
         </td>

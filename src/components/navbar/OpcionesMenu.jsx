@@ -1,15 +1,20 @@
 import { NavLink } from "react-router-dom";
+import styles from "./css/topbar.module.css"
+const OpcionesMenu = (props) => {
 
-const OpcionesMenu = ({ nombre }) => {
   const pathnameCat = "/categoria/";
 
   return (
-
-        <li className='tab'>
-          <NavLink key={nombre} to={pathnameCat + nombre} className="mayuscula">{nombre}</NavLink>
-          </li>
-      )  
-  
+    <li>
+      <NavLink
+        key={props.nombre}
+        to={pathnameCat + props.nombre}
+        className={styles.tabs}
+      >
+        {props.nombre}
+      </NavLink>
+    </li>
+  );
 };
 
 export default OpcionesMenu;

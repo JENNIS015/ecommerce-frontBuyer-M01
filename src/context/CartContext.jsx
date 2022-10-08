@@ -25,12 +25,11 @@ export const CartContextProvider = ({ children }) => {
   };
 
   const addItems = (items) => {
-    console.log("ITEMS", items);
     const checkExist = cartList.find((item) => item.id === items.id);
 
     if (checkExist) {
       let cantidadNueva = checkExist.cantidad + items.cantidad;
-      console.log("CANTNUEW", cantidadNueva);
+
       if (items.stock > cantidadNueva) {
         setCantidades((checkExist.cantidad = cantidadNueva));
         setCartList(cartList);
@@ -42,7 +41,7 @@ export const CartContextProvider = ({ children }) => {
           "No se ha podido agregar al carrito. Cantidades disponibles en stock: " +
             items.stock
         );
-        console.log("   items.stock", items.stock);
+
         setTimeout(() => {
           setMessage("");
         }, 8000);
@@ -79,8 +78,6 @@ export const CartContextProvider = ({ children }) => {
 
   // const [inputType, setInputType] = useState("input");
 
-
-
   const [detalleOrden, guardarDetalle] = useState();
   return (
     <CartContext.Provider
@@ -96,7 +93,7 @@ export const CartContextProvider = ({ children }) => {
         deleteItem,
         deleteAll,
         formatNumber,
-        precioTotal
+        precioTotal,
       }}
     >
       {children}

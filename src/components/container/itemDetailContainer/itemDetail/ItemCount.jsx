@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-
-const ItemCount = ({ initial, stock, onAdd }) => {
+import styles from "./addcart.module.css"
+const ItemCount = ({ initial, stock, onAdd,hide }) => {
   const [count, setCount] = useState(initial);
-
+ 
   const aumentarContador = () => {
      if (count < stock) {
       setCount(count + 1);
@@ -16,22 +16,23 @@ const ItemCount = ({ initial, stock, onAdd }) => {
   };
 
   return (
-    <div className='count'>
-      <div className='quantity-input'>
-        <button className='minus' onClick={disminuyeContador}>
-          -
-        </button>
-        <span className='number-input'>{count}</span>
-        <span className='plus' onClick={aumentarContador}>
-          +
-        </span>
-      </div>
-
-      <div className='agregarCarrito'>
-        <button className='addtocart' onClick={() => onAdd(count)}>
-          <div className='pretext'>
-            <i className='material-icons'>shopping_cart</i> AGREGAR
-          </div>
+    <div className="count">
+      {hide !== true ? (
+        <div className="quantity-input">
+          <button className="minus" onClick={disminuyeContador}>
+            -
+          </button>
+          <span className="number-input">{count}</span>
+          <span className="plus" onClick={aumentarContador}>
+            +
+          </span>
+        </div>
+      ) : (
+        ""
+      )}
+      <div className="agregarCarrito">
+        <button className={styles.button} onClick={() => onAdd(count)}>
+          AGREGAR AL CARRITO
         </button>
       </div>
     </div>

@@ -1,30 +1,22 @@
-import { NavLink } from "react-router-dom";
 import OpcionesMenu from "./OpcionesMenu";
+import { NavLink } from "react-router-dom";
+import styles from "./css/topbar.module.css";
+const NavBarBrowser = (props) => {
 
-const NavBarBrowser = ({ categorias }) => {
- 
   return (
     <>
-      <div className="nav-wrapper container">
-        <ul id="nav-mobile" className="right hide-on-med-and-down mayuscula">
-          <li>
-            <NavLink exact to="/">
-              Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink exact to="/productos">
-              Productos
-            </NavLink>
-          </li>
-        </ul>
-      </div>
-
       <div className="nav-content  hide-on-med-and-down ">
         <ul className="tabs tabs-transparent">
-          { categorias.map((catMenu) => (
-            <OpcionesMenu nombre={catMenu} key={catMenu}/>
-          ))}
+          <li>
+            <NavLink to={"/productos"} className={styles.tabshop}>
+              Shop
+            </NavLink>
+          </li>
+          {props.categorias
+            ? props.categorias.map((item, i) => (
+                <OpcionesMenu nombre={item} key={i} />
+              ))
+            : ""}
         </ul>
       </div>
     </>

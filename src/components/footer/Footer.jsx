@@ -1,31 +1,46 @@
 import React from "react";
-
-export default function Footer() {
+import OpcionesMenu from "../navbar/OpcionesMenu";
+import styles from "./footer.module.css";
+export default function Footer(props) {
   return (
-    <footer className='page-footer grey'>
-      <div className='container'>
-        <div className='row'>
-          <div className='col l6 s12'>
-            <h5 className='white-text'>MARKET BA</h5>
-            <p className='grey-text text-lighten-4'>
-              Somos un equipo de estudiantes que trabajan en este
-              proyecto como si fuera nuestro trabajo de tiempo completo.
+    <footer className={styles.contenedor}>
+      <div className={styles.boxContenedor}>
+        <div className="row">
+          <div className="col l4 m4 s12">
+            <span className="led"> MARKET BA</span>
+            <p className={styles.text}>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis
+              ipsum suspendisse ultrices gravida.
             </p>
           </div>
-          
-          <div className='col l6 s12'>
-            <h5 className='white-text'>CONTACTO</h5>
-            <p><i className="tiny material-icons">local_phone</i> 11-XXX-XXXX</p>
-            <p><i className="tiny material-icons">email</i> contacto@marketba.ar</p>
-            <p><i className="tiny material-icons">place</i> Av. Cantilo 000 - Buenos Aires </p>
+          <div className="col l4 m4 s12">
+            <h5 className={styles.area}>Categorias</h5>
+            <ul>
+              {props.categorias
+                ? props.categorias.map((item, i) => (
+                    <OpcionesMenu nombre={item} key={i} />
+                  ))
+                : ""}
+            </ul>
+          </div>
+          <div className="col l4 m4 s12">
+            <h5 className={styles.area}>Contacto</h5>
+            <p className={styles.text}>
+              <i className="tiny material-icons">local_phone</i> 11-XXX-XXXX
+            </p>
+            <p className={styles.text}>
+              <i className="tiny material-icons">email</i> contacto@marketba.ar
+            </p>
+            <p className={styles.text}>
+              <i className="tiny material-icons">place</i> Av. Cantilo 000 -
+              Buenos Aires
+            </p>
           </div>
         </div>
       </div>
-      <div className='footer-copyright'>
-        <div className='container'>
-          Hecho por <span className='blue-text text-lighten-3'>Jennifer</span>
-        </div>
-      </div>
+
+      <div className={styles.copy}>Hecho por Jennifer</div>
     </footer>
   );
 }

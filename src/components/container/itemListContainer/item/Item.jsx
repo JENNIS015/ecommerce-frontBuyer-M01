@@ -1,9 +1,10 @@
-import { React, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useCartContext } from "../../../../context/CartContext";
- import { baseURL } from "../../../../config/config";
 import ItemCount from "../../itemDetailContainer/itemDetail/ItemCount";
-const Item = ({ key,product }) => {
+import { useCartContext } from "../../../../context/CartContext";
+import { baseURL } from "../../../../config/config";
+import styles from "./item.module.css";
+const Item = ({ key, product, hide }) => {
   const { addItems, formatNumber } = useCartContext();
   const [inputType, setInputType] = useState("input");
 
@@ -11,35 +12,55 @@ const Item = ({ key,product }) => {
     addItems({ ...product, cantidad: count });
     setInputType("button");
   };
- 
+  const precioVigente = product.oferta > 1 ? product.oferta : product.precio;
+  const precioRegular = product.oferta ? product.precio : "";
+  const descuento = product.oferta ? product.precio / product.oferta : 0;
   const urlImagen = product.foto ? product.foto[0].filename : "default.jpg";
+  const productId=product._id?product._id:product.id
   return (
-    <div className="col s12 m6 l4" key={product.id}>
-      <div className="card hoverable">
-        <Link to={`/item/${product.id}`}>
-          <div className="card-image waves-effect waves-block waves-light">
-            <img
-              alt={product.nombre}
-              className="imgDetail"
-              src={baseURL + "/uploads/" + urlImagen}
-            />
-          </div>
+    <div key={key} className={styles.card}>
+      <Link to={`/item/${productId}`}>
+        <div>
+          <p className={product.stock === 0 ? styles.agotado : ""}>
+            {product.stock !== 0 ? "" : "AGOTADO"}
+          </p>
+          <p className={product.oferta ? styles.ribbon : styles.esconder}>
+            <span className={styles.text}>
+              {"-" + Math.round(descuento * 100 - 100) + "%"}
+            </span>
+          </p>
 
-          <div className="card-content">
-            <span>{`${product.nombre.slice(0, 30) + "..."}`}</span>
+          <img
+            alt={product.nombre}
+            className={product.stock !== 0 ? styles.image : styles.imageSold}
+            src={baseURL + "/uploads/" + urlImagen}
+          />
+        </div>
 
-            <p className="mayuscula prod-categoria">{`${product.categoria}`}</p>
-            <div className="prod-price">{formatNumber(product.precio)}</div>
+        <div className={styles.content}>
+          <p className={styles.name}>{`${product.nombre.slice(0, 60)}`}</p>
+
+          <div className={styles.oferta}></div>
+          <div className={styles.price}>
+            <span className={styles.old}>
+              {precioRegular !== "" ? formatNumber(product.precio) : ""}
+            </span>
+            {formatNumber(precioVigente)}
           </div>
+        </div>
+      </Link>
+      {inputType === "input" ? (
+        <ItemCount
+          initial={1}
+          stock={product.stock}
+          onAdd={onAdd}
+          hide={hide}
+        />
+      ) : (
+        <Link to="/cart" className="pretext comprar">
+          Ir a Carrito
         </Link>
-        {inputType === "input" ? (
-          <ItemCount initial={1} stock={product.stock} onAdd={onAdd} />
-        ) : (
-          <Link to="/cart" className="pretext comprar">
-            Ir a Carrito
-          </Link>
-        )}
-      </div>
+      )}
     </div>
   );
 };

@@ -1,0 +1,34 @@
+.contenedor {
+  background-color: var(--color-icons);
+}
+.iconsAll {
+  padding: 30px;
+  display: flex;
+}
+.box {
+  align-items: center;
+  justify-items: center;
+  display: block;
+  padding:15px;
+  text-align:center
+}
+
+.text {
+  font-weight: 600;
+  /* color:var(--color-text-icons); */
+  text-transform: uppercase;
+      margin-bottom: 0;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.img {
+  
+  margin: 0;
+ 
+  width: 45px;
+  height: 45px;
+  font-size: 20px;
+  line-height: 15px;
+}
+ 

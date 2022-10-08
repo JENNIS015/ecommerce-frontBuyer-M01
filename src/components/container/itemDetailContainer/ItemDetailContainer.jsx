@@ -16,7 +16,7 @@ const ItemDetailContainer = () => {
       .then((response) => {
         setProdIndiv(response.data);
       })
-      .catch((err) => console.log(err))
+
       .finally(() => setLoading(false));
   }, [id]);
  

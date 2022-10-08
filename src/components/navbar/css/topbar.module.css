@@ -1,0 +1,9 @@
+.topbarBackground {
+  color: var(--color-menuTextTopBar);
+  background-color: var(--color-topBar);
+  text-align:center;
+}
+ .tabs{
+    color:var(--color-menuText);
+ }
+ 

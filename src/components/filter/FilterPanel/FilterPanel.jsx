@@ -1,14 +1,8 @@
-import React from "react";
-import axios from "axios";
-import { baseURL } from "../../../config/config";
-import { useState, useEffect } from "react";
-
-import { priceList } from "../constants/constant";
 import FilterListToggle from "../../common/Filter/FilterListToggle";
 import CheckboxProton from "../../common/Filter/CheckBoxProton";
 import "./style.css";
 import SliderProton from "../../common/Filter/SliderProton";
-
+//import BaseService from "../../../services/dataList";
 const FilterPanel = ({
   selectedCategory,
   selectToggle,
@@ -16,18 +10,12 @@ const FilterPanel = ({
   changeChecked,
   selectedPrice,
   changePrice,
+  priceList,
   id,
+  categorias,
 }) => {
-  const [categoryList, setCategorias] = useState([]);
-  useEffect(() => {
-    axios
-      .get(baseURL + "/categorias")
-      .then((response) => {
-        setCategorias(response.data.cat);
-      })
-      .catch((err) => console.log(err));
-  }, []);
-
+ 
+ 
   let categoriaNombre;
   !id ? (categoriaNombre = "Categoria") : (categoriaNombre = "");
   return (
@@ -38,7 +26,7 @@ const FilterPanel = ({
         <p className="label">{categoriaNombre}</p>
         {!id ? (
           <FilterListToggle
-            options={categoryList}
+            options={categorias}
             value={selectedCategory}
             selectToggle={selectToggle}
           />
@@ -60,13 +48,14 @@ const FilterPanel = ({
       {/* Checkbox*/}
       <div className="input-group">
         <p className="label">Color</p>
-        {color.map((choise) => (
-          <CheckboxProton
-            key={choise.id}
-            cuisine={choise}
-            changeChecked={changeChecked}
-          />
-        ))}
+        { color.map((choise) => (
+              <CheckboxProton
+                key={choise.id}
+                color={choise}
+                changeChecked={changeChecked}
+              />
+            ))
+        }
       </div>
     </div>
   );

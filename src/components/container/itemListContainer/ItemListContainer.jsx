@@ -5,19 +5,45 @@ import { useParams } from "react-router-dom";
 import EmptyView from "../EmpytView/EmptyView";
 import Searchbar from "../../filter/SearchBar/SearchBar";
 import FilterPanel from "../../filter/FilterPanel/FilterPanel";
-import { priceList, checkBox } from "../../filter/constants/constant";
 
-export const ItemListContainer = (item) => {
-  const data = item.item;
-  const [list, setList] = useState(data);
-
+import BaseService from "../../../services/dataList";
+export const ItemListContainer = (props) => {
   const { id } = useParams();
+  const data = props.items;
+  const [list, setList] = useState(data);
+  const [coloresBD, setColoresBD] = useState([]);
+  const [color, setcolors] = useState( coloresBD?coloresBD : null);
+  const [preciosBD, setPreciosBD] = useState([10000]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const getData = async () => {
+      await BaseService.getColors().then((res) => {
+ 
+        setColoresBD(res.data);
+      });
+
+      await BaseService.getPrices()
+        .then((res) => {
+          setPreciosBD(res.data.item);
+        })
+
+        .finally(() => setLoading(false));
+    };
+    getData();
+  }, []);
+ 
+
+  const priceList = {
+    min: 0,
+    max: Math.max(...preciosBD),
+  };
+
   const [selectedCategory, setSelectedCategory] = useState(null);
-  const [selectedPrice, setPrice] = useState([priceList.min, priceList.max]);
+
   const [inputSearch, setInputSearch] = useState("");
   const [resoultFound, setResultsFound] = useState(false);
-
-  const [color, setcolors] = useState(checkBox);
+  const [selectedPrice, setPrice] = useState([0, Math.max(...preciosBD)]);
 
   const handleSelectCategory = (event, value) => {
     if (!value) {
@@ -27,20 +53,19 @@ export const ItemListContainer = (item) => {
     }
   };
 
-  const handleChangeChecked = (id) => {
-    const colorStateList = color;
-    const changeCheckedcolor = colorStateList.map((item) =>
-      item.id === id ? { ...item, checked: !item.checked } : item
-    );
+const handleChangeChecked = (id) => {
+ 
+  const changeCheckedcolor = coloresBD.map((item) =>
+    item.id === id ? { ...item, checked: !item.checked } : item
+  );
 
-    setcolors(changeCheckedcolor);
-  };
+  setcolors(changeCheckedcolor);
+};
 
   const handleChangePrice = (event, value) => setPrice(value);
   const applyFilters = () => {
     let updateList = data;
 
-    //Rating Filter
     if (id) updateList = updateList.filter((item) => item.categoria === id);
 
     if (selectedCategory) {
@@ -52,17 +77,15 @@ export const ItemListContainer = (item) => {
     }
 
     //color Filter
-
     const colorChecked = color
       .filter((item) => item.checked)
-      .map((item) => item.label.toLowerCase());
+      .map((item) => item.nombre );
 
     if (colorChecked.length) {
       updateList = updateList.filter((item) =>
         colorChecked.includes(item.color)
       );
     }
-
     //Price
     const minPrice = selectedPrice[0];
     const maxPrice = selectedPrice[1];
@@ -92,26 +115,26 @@ export const ItemListContainer = (item) => {
   }, [selectedCategory, color, selectedPrice, inputSearch, id]);
 
   return (
-    <div className="home">
-      <Searchbar
-        value={inputSearch}
-        changeInput={(e) => setInputSearch(e.target.value)}
-      />
-      <div className="home_panelList-wrap">
-        <div className="home_penel-wrap">
-          <FilterPanel
-            selectToggle={handleSelectCategory}
-            selectedCategory={selectedCategory}
-            color={color}
-            changeChecked={handleChangeChecked}
-            selectedPrice={selectedPrice}
-            changePrice={handleChangePrice}
-            id={id}
-          />
-        </div>
-        <div className="home_list-wrap">
-          {resoultFound ? <List list={list} /> : <EmptyView />}
-        </div>
+    <div className="home_panelList-wrap">
+      <div className="home_penel-wrap">
+        <Searchbar
+          value={inputSearch}
+          changeInput={(e) => setInputSearch(e.target.value)}
+        />
+        <FilterPanel
+          selectToggle={handleSelectCategory}
+          selectedCategory={selectedCategory}
+          color={coloresBD}
+          changeChecked={handleChangeChecked}
+          selectedPrice={selectedPrice}
+          changePrice={handleChangePrice}
+          priceList={priceList}
+          id={id}
+          categorias={props.categorias}
+        />
+      </div>
+      <div className="home_list-wrap">
+        {resoultFound ? <List list={list} /> : <EmptyView />}
       </div>
     </div>
   );

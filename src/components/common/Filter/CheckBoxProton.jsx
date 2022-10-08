@@ -10,7 +10,6 @@ const useStyles = makeStyles({
     },
   },
 
-  checked: {},
   wrap: {
     width: "100%",
     display: "flex",
@@ -21,14 +20,13 @@ const useStyles = makeStyles({
   },
   label: {
     fontSize: ".8rem",
-    fontFamily: `'Raleway', sans-serif`,
   },
 });
-function CheckboxProton({ cuisine, changeChecked }) {
+function CheckboxProton({ color, changeChecked }) {
   const classes = useStyles();
-  const { checked, label, id } = cuisine;
+  const { checked, nombre, id } = color;
   return (
-    <div>
+   <div>
       <FormControlLabel
         classes={{
           label: classes.label,
@@ -45,9 +43,11 @@ function CheckboxProton({ cuisine, changeChecked }) {
             onChange={() => changeChecked(id)}
           />
         }
-        label={label}
+        label={nombre}
       />
     </div>
+      
+    
   );
 }
 

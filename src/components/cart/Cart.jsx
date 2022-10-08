@@ -2,9 +2,10 @@ import React from "react";
 import { useCartContext } from "../../context/CartContext";
 import CartItem from "./CartItem";
 import { Link } from "react-router-dom";
-import "../cart/css/estilo_cart.css";
-
+import styles from "./css/cart.module.css";
 import { useHistory } from "react-router-dom";
+ 
+
 const Cart = () => {
   const { cartList, deleteAll, formatNumber, precioTotal } = useCartContext();
   const history = useHistory();
@@ -17,23 +18,25 @@ const Cart = () => {
             {cartList.length ? (
               <>
                 <h1>Carrito</h1>
-                <table className="responsive-table">
+                <table className={styles.tablecart}>
                   <tbody>
-                    <td></td>
+             
                     {cartList.map((prodCart) => (
                       <CartItem key={prodCart.id} prod={prodCart} />
                     ))}
                   </tbody>
                 </table>
 
-                <h5 className="total">Total:{formatNumber(precioTotal())}</h5>
+                <h5 className={styles.total}>
+                  Total:{formatNumber(precioTotal())}
+                </h5>
                 <div className="col s12">
                   <div className="row">
-                    <button className="btn" onClick={deleteAll}>
+                    <button className={styles.btn} onClick={deleteAll}>
                       Vaciar Carrito
                     </button>
                     <button
-                      className="btn"
+                      className={styles.btn}
                       onClick={() => history.push("/order")}
                     >
                       Confirmar compra
@@ -45,10 +48,7 @@ const Cart = () => {
               <div className="container full">
                 <h3>Tu carrito está vacío</h3>
                 <h5>¿No sabés qué comprar? ¡Miles de productos te esperan !</h5>
-                <Link
-                  to={`/productos`}
-                  className="waves-effect waves-light btn"
-                >
+                <Link to={`/productos`} className={styles.btn}>
                   Ir a Productos
                 </Link>
               </div>

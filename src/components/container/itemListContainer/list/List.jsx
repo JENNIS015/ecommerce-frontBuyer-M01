@@ -3,10 +3,13 @@ import Item from "../item/Item";
 import "./styles.css";
 
 const List = ({ list }) => {
+
 return (
-  <div className="list-wrap">
+  <div class="row">
     {list.map((item) => (
-      <Item key={item.id} product={item} />
+      <div className="col s12 m4 l4">
+        <Item key={item.id} product={item} hide={true} />
+      </div>
     ))}
   </div>
 );

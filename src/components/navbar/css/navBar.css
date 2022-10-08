@@ -1,58 +1,104 @@
 .Navbar ul li a {
-  color: inherit;
+  color: var(--color-menuText);
   text-decoration: none;
   padding: 0 0.25rem;
   letter-spacing: 0.2rem;
   position: relative;
 }
-
+div.nav-wrapper .container {
+  display: inline-flex;
+}
+.led {
+  color: var(--color-menuText);
+  margin-top: 15px;
+  font-weight: 900;
+}
 .Navbar ul li a:before {
   content: "";
-  position: absolute;
+
   top: 100%;
   bottom: 0;
   left: 0;
   right: 0;
   transition: all 0.3s ease-out;
-} 
+}
+.brand-logo {
+  position: relative !important;
+}
+.slick-dots {
+  position: relative;
+  margin-top: -8% !important;
+}
 
+.widgetCantidad {
+  position: absolute;
+  background: var(--color-menuText);
+  font-weight: 600;
+  border-radius: 50%;
+  color: white;
+  width: 16px;
+  height: 16px;
+  font-size: 12px;
+  text-align: center;
+  line-height: 16px;
+}
+.slick-dots li button:before {
+  font-family: "slick";
+  font-size: 15px;
+  color: white;
+}
+.slick-dots li.slick-active button:before {
+    opacity: .75;
+     color: white;
+}
+.iconCantidad {
+  display: -webkit-inline-box;
+  margin-top: 10px;
+  float: right;
 
+  color: var(--color-menuText);
+}
 
- .Navbar {
+.ocultar {
+  display: none;
+}
+
+.Navbar {
   display: grid;
   grid-template-columns: auto 1fr;
   align-items: center;
-  background-color: var(--color-menu);
 }
 
 .Navbar h2 {
   padding: 0.25rem 0.75rem;
   font-size: 2.5rem;
-  color: var(--color-oscuro);
+  color: var(--color-menuText);
   background: var(--color-logo);
   position: relative;
   transition: all 0.3s ease-in-out;
-} 
+}
 .menuEstandar {
-  color: var(--color-blanco);
+  color: var(--color-oscuro);
 }
 nav {
-  background-color: #150c7b !important;
+  background-color: var(--color-menu);
 }
 nav ul a {
   font-size: 1.1rem;
+  color: var(--color-menuText);
 }
+
 .portada {
   max-width: 100%;
   object-fit: cover;
   max-height: 300px;
 }
 
-.collapsible{
-  padding: 0 12px!important;
+.collapsible {
+  padding: 0 12px !important;
   font-weight: 600;
 }
 
-.mayuscula{
+.mayuscula {
   text-transform: uppercase;
 }

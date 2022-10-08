@@ -7,17 +7,8 @@ import "../cart/css/estilo_sucess.css";
 const Sucess = (props) => {
   const { formatNumber } = useCartContext();
 const ordenDetail=props.location.state.data
-console.log(ordenDetail);
-  //  useEffect(() => {
-  // const dbQuery
-  // dbQuery
-  //   .collection("orders")
-  //   .doc(dataOrder.id)
-  //   .get()
-  //   .then((snapshot) =>guardarDetalle(snapshot.data())
-  //   )
-  //   .catch((err) => console.log(err));
-  // }, [dataOrder,guardarDetalle]);
+
+   
 
   return (
     <div className="row">

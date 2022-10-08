@@ -32,10 +32,10 @@ const NavBarMobile = ({ categorias }) => {
           Todos
         </NavLink>
       </li>
-      {categorias.map((catMenu) => (
+      { categorias? (categorias.map((catMenu) => (
         <OpcionesMenu key={catMenu} nombre={catMenu} />
-      ))}
-      )
+       ))):""}
+ 
     </ul>
   );
 };

@@ -19,7 +19,7 @@ const FormOrder = () => {
     provincia: "",
     telefono: "",
   });
-  console.log(formData);
+
   let orden = {};
 
   const generarOrden = async (e) => {
@@ -59,7 +59,7 @@ const FormOrder = () => {
       deleteAll();
     }
   };
-  console.log("OR1", order);
+
   return (
     <div>
       {cartList.length === 0 && order ? (

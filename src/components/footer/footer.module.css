@@ -1,0 +1,41 @@
+.contenedor {
+  align-items: center;
+  justify-items: center;
+  background-color: var(--color-footer);
+  color: var(--color-text-footer);
+}
+.boxContenedor {
+  padding: 40px;
+}
+.area {
+  font-size: 19px;
+  position: relative;
+  padding-bottom: 5px;
+  font-size: 20px;
+  margin-bottom: 15px;
+  font-weight: 700;
+  margin-top: 0;
+}
+
+.area::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: #000;
+  width: 45px;
+  height: 2px;
+}
+.text {
+  font-size: 13px;
+  margin-top: 10px;
+}
+.copy {
+  background-color: var(--color-footer-Copy);
+  display: block;
+  padding: 10px;
+  font-size: 16px;
+  text-align: center;
+  width: 100%;
+  color: var(--color-text-Copy);
+}
