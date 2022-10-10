@@ -1,0 +1,132 @@
+.total {
+  width: 100%;
+  text-align: right;
+  display: inline-table;
+  font-weight: 600;
+}
+
+.buttons {
+  display: block;
+  float: right;
+}
+td,
+th {
+  padding: 10px;
+}
+i {
+ 
+  background-color: white !important;
+  font-size: 1.2rem !important;
+}
+.hide{
+  display: none!important;
+}
+.tituloPrincipal{
+  background-color: #f1f1f1;
+  font-weight: 700;
+  text-align: center;
+  width: 100%;
+  display: inline-block;
+  font-size: 18px;
+  position: relative;
+  padding: 15px;
+}
+.minu,
+.plus {
+  cursor: pointer;
+  align-self: center;
+  font-size: 25px;
+
+  font-weight: 500;
+  padding: 0 10px;
+  position: relative;
+  background: none;
+  border: none;
+  outline: 0 !important;
+}
+.quantity {
+  display: flex;
+  background-color: #f3f3f3;
+}
+
+.numberinput {
+  align-self: center;
+  width: 100px;
+  text-align: center;
+  font-size: 15px;
+
+  border-radius: 4px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.producto {
+  text-decoration: none;
+  color: #666666;
+  font-weight: bold;
+  display: inline-block;
+  font-size: 15px;
+}
+.tablecart {
+  margin: 0 -1px 24px 0;
+  text-align: left;
+  width: 100%;
+  border-collapse: separate;
+  border-radius: 5px;
+}
+.img {
+  min-width: 32px;
+}
+.imgCart {
+  width: 100px;
+}
+.formulario {
+  padding: 30px;
+}
+.btn {
+  color: #fff;
+  background-color: black;
+  margin: 10px;
+  padding: 5px 15px;
+}
+.container {
+  width: 80%;
+}
+.productoCheckout{
+  font-size: 12px;
+  width: 100%;
+}
+@media screen and (max-width: 780px) {
+  table {
+    display: block;
+    overflow-x: auto;
+    font-size: 12px;
+  }
+  .one {
+    display: none !important;
+  }
+ tr{
+  width: 100%;
+ }
+  td,
+  th {
+    padding: 8px;
+  }
+  i {
+    font-size: 18px !important;
+  }
+ 
+  .producto {
+     font-size: 12px;
+    font-weight: 300;
+  }
+  .numberinput{
+    font-size: 10px;
+  }
+  .imgCart {
+    width: 30px;
+  }
+  .container {
+    width: 98% !important;
+  }
+}

@@ -1,0 +1,16 @@
+.carousel{
+    height: auto;
+    
+}
+.carousel.carousel-slider{
+    margin-top:10px!important
+}
+.carousel.carousel-slider .control-arrow {
+
+    color: #000;
+}
+
+ 
+.carousel .carousel-status {
+    display: none;
+}

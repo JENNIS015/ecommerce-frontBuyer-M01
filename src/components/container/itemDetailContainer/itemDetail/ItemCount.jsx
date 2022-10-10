@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "./addcart.module.css"
+import styles from "./item.module.css"
 const ItemCount = ({ initial, stock, onAdd,hide }) => {
   const [count, setCount] = useState(initial);
  
@@ -16,21 +16,21 @@ const ItemCount = ({ initial, stock, onAdd,hide }) => {
   };
 
   return (
-    <div className="count">
+    <div className={hide !== true ?styles.addCart:""}>
       {hide !== true ? (
-        <div className="quantity-input">
-          <button className="minus" onClick={disminuyeContador}>
+        <div className={styles.quantity}>
+          <button className={styles.minu} onClick={disminuyeContador}>
             -
           </button>
-          <span className="number-input">{count}</span>
-          <span className="plus" onClick={aumentarContador}>
+          <span className={styles.numberinput}>{count}</span>
+          <span className={styles.plus} onClick={aumentarContador}>
             +
           </span>
         </div>
       ) : (
         ""
       )}
-      <div className="agregarCarrito">
+      <div className={styles.agregarCarrito}>
         <button className={styles.button} onClick={() => onAdd(count)}>
           AGREGAR AL CARRITO
         </button>

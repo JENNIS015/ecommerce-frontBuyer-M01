@@ -1,7 +1,7 @@
 import { useCartContext } from "../../context/CartContext";
 import Form from "./Form";
 import { Redirect } from "react-router";
-import { useState, useEffect } from "react";
+import { useState,  } from "react";
 import BaseService from "../../services/dataList";
 
 const FormOrder = () => {
@@ -25,7 +25,12 @@ const FormOrder = () => {
   const generarOrden = async (e) => {
     e.preventDefault();
     orden.buyerID = formData.email;
-    orden.shippingAddress = formData.direccion + " - " + formData.provincia + " - " + formData.opcional;
+    orden.shippingAddress =
+      formData.direccion +
+      " - " +
+      formData.provincia +
+      " - " +
+      formData.opcional;
     orden.phone = formData.telefono;
     orden.name = formData.nombre;
     orden.status = "pendiente";

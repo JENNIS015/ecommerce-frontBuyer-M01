@@ -5,7 +5,7 @@ export const data = [
     top: "Retorno a la oficina",
     title: "50% OFF",
     button: "Descubrí",
-    link: "#",
+    link: "/productos",
   },
   {
     id: 2,
@@ -13,6 +13,6 @@ export const data = [
     top: "Look casual",
     title: "Imperdibles ",
     button: "Descubrí",
-    link: "#",
+    link: "/productos",
   },
 ];

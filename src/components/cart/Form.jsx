@@ -1,8 +1,21 @@
-import { useState, React, useEffect } from "react";
+import { useState, React } from "react";
 import { useCartContext } from "../../context/CartContext";
 import CartItem from "./CartItem";
 const style = {
   message: { color: "red" },
+  tituloPrincipal: {
+    backgroundColor: "#f1f1f1",
+    fontWeight: "700",
+    textAlign: "center",
+    width: "100%",
+    display: "inline-block",
+    fontSize: "18px",
+    position: "relative",
+    padding: "15px",
+  },
+  btnBlack: {
+    backgroundColor: "black",
+  },
 };
 const Form = ({ formData, setFormData, envio, precio, setPrecio }) => {
   const { cartList, precioTotal, formatNumber } = useCartContext();
@@ -26,9 +39,9 @@ const Form = ({ formData, setFormData, envio, precio, setPrecio }) => {
   };
   return (
     <div className="container">
-      <h2>Checkout</h2>
+      <h1 style={style.tituloPrincipal}>Checkout</h1>
       <div className="row">
-        <div className="col s12 m12 l8">
+        <div className="col s12 m12 l7">
           <h5>Datos de facturación</h5>
           <form onSubmit={envio}>
             <div className="col s12 m6 l6">
@@ -162,40 +175,27 @@ const Form = ({ formData, setFormData, envio, precio, setPrecio }) => {
                 required
               />
             </div>
-            <div className="col s12 m12 l4">
-              <button
-                className="btn waves-effect waves-light"
-          
-                disabled={
-                  formData.nombre === "" ||
-                  formData.apellido === "" ||
-                  formData.email === "" ||
-                  formData.direccion === "" ||
-                  formData.zip === "" ||
-                  formData.provincia === ""
-                }
-              >
-                Confirmar <i className="material-icons right">send</i>
-              </button>
-            </div>
+
+            <button
+              className="btn waves-effect waves-light"
+              style={style.btnBlack}
+              disabled={
+                formData.nombre === "" ||
+                formData.apellido === "" ||
+                formData.email === "" ||
+                formData.direccion === "" ||
+                formData.zip === "" ||
+                formData.provincia === ""
+              }
+            >
+              Confirmar
+            </button>
           </form>
         </div>
 
-        <div className="col s12 m12 l4">
-          <table>
-            <thead>
-              <tr>
-                <th>Imagen</th>
-                <th>Item</th>
-                <th>Precio Unitario</th>
-                <th>Subtotal</th>
-              </tr>
-            </thead>
+        <div className="col s12 m12 l5">
+          <CartItem productos={cartList} checkout={true} />
 
-            {cartList.map((prodCart) => (
-              <CartItem key={prodCart.id} prod={prodCart} checkout={true} />
-            ))}
-          </table>
           <h5>
             Total <strong>{formatNumber(precio)}</strong>
           </h5>
@@ -218,7 +218,8 @@ const Form = ({ formData, setFormData, envio, precio, setPrecio }) => {
 
               <button
                 type="button"
-                className="btn btn-secondary"
+                className="btn"
+                style={style.btnBlack}
                 onClick={checkCode}
               >
                 Aplicar

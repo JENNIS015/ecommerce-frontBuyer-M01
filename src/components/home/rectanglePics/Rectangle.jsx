@@ -23,7 +23,7 @@ function Rectangle() {
                 <div className={styles.content}>
                   <span>{item.top}</span>
                   <p className={styles.title}>{item.title}</p>
-                  <Link href={item.link} className={styles.button}>
+                  <Link to={item.link} className={styles.button}>
                     {item.button}
                   </Link>
                 </div>

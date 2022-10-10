@@ -57,7 +57,7 @@ const Item = ({ key, product, hide }) => {
           hide={hide}
         />
       ) : (
-        <Link to="/cart" className="pretext comprar">
+        <Link to="/cart" className={styles.pretext}>
           Ir a Carrito
         </Link>
       )}

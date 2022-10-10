@@ -1,52 +1,87 @@
-import React from "react";
 import { useCartContext } from "../../context/CartContext";
 import { Link } from "react-router-dom";
-import {baseURL} from "../../config/config"
- 
-import styles from "./css/cart.module.css";
-const CartItem = (prod)=> {
-  const { formatNumber, deleteItem } = useCartContext();
+import { baseURL } from "../../config/config";
+import styles from "./cart.module.css";
+import Count from "./Count";
 
-  const productos= prod.prod
-  const urlImagen = productos.foto?productos.foto[0].filename:"default.jpg"
+const CartItem = (props) => {
+  console.log(props)
+  const productos = props.productos;
+
+  const { formatNumber, deleteItem, precioTotal } = useCartContext();
+
   return (
-    <tbody>
-      <tr>
-        <td>
-          <img
-            src={baseURL + "/uploads/" + urlImagen}
-            className={styles.img}
-            alt={productos.nombre}
-          />
-        </td>
+    <div className={styles.responsive}>
+      <table className={styles.tablecart}>
+        <thead>
+          <tr>
+            <th className={!props.sucess === true ? styles.one : styles.hide}>
+              Imagen
+            </th>
+            <th>Nombre</th>
+            <th>Cantidad</th>
+            <th className={styles.one}>Precio Unitario</th>
+            <th>Subtotal</th>
+          </tr>
+        </thead>
 
-        <td>
-          <Link to={`/item/${productos.id}`}>
-            <p>{`${productos.nombre}`}</p>
-            <p>x {productos.cantidad}</p>
-          </Link>
-        </td>
-        <td>
-          <p>{formatNumber(productos.precio)}</p>
-        </td>
+        <tbody>
+          {productos.map((prod) => (
+            <tr>
+              <td className={!props.sucess === true ? styles.one : styles.hide}>
+                <img
+                  src={
+                    baseURL +
+                    "/uploads/" +
+                    (prod.foto ? prod.foto[0].filename : "default.jpg")
+                  }
+                  className={styles.imgCart}
+                  alt={prod.nombre}
+                />
+              </td>
 
-        <td>
-          <p className="strong">
-            {formatNumber(productos.cantidad * productos.precio)}
-          </p>
-        </td>
+              <td>
+                <Link
+                  className={
+                    props.checkout || props.sucess !== true
+                      ? styles.producto
+                      : styles.productoCheckout
+                  }
+                  to={`/item/${prod.id}`}
+                >
+                  <p>{`${prod.nombre}`}</p>
+                </Link>
+              </td>
 
-        {prod.checkout ? (
-          ""
-        ) : (
-          <td className="borrar">
-            <button onClick={() => deleteItem(productos.id)}>
-              <i className="tiny material-icons">delete</i>
-            </button>
-          </td>
-        )}
-      </tr>
-    </tbody>
+              <Count
+                productos={prod}
+                checkout={props.checkout}
+                sucess={props.sucess}
+              />
+
+              {props.checkout || props.sucess === true ? (
+                ""
+              ) : (
+                <td>
+                  <button
+                    onClick={() => {
+                      deleteItem(prod.id);
+                    }}
+                  >
+                    <i className="tiny material-icons">delete</i>
+                  </button>
+                </td>
+              )}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      {props.checkout || props.sucess !== true ? (
+        <h5 className={styles.total}>Total:{formatNumber(precioTotal())}</h5>
+      ) : (
+        ""
+      )}
+    </div>
   );
-}
-export default CartItem
+};
+export default CartItem;

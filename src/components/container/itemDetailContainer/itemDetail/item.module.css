@@ -1,0 +1,159 @@
+.producto {
+  flex: auto;
+  font-size: 22px !important;
+  margin-bottom: 8px;
+  margin-right: 15px;
+}
+.quantity {
+  display: contents;
+}
+.hide {
+  display: none;
+}
+.desc{display:flex; }
+.descuento{
+ font-weight: 800;
+    color: red;
+    font-size: 16px;
+}
+.agotado {
+  font-size: 16px;
+  font-weight: 700;
+}
+.precioRegular {
+  margin-left: 15px;
+  display: block;
+  font-size: 14px;
+  color: #999999;
+  font-weight: 400;
+  text-decoration: line-through;
+  margin-right: 4px;
+}
+.price {
+  display: inline-block;
+  line-height: 1em;
+  overflow: visible;
+  font-weight: 400;
+  font-size: 36px;
+}
+.button {
+  width: 100%;
+
+  margin: 0;
+  line-height: 1;
+  cursor: pointer;
+
+  background-color: #222222;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 400;
+  text-decoration: none;
+  border: 1px solid #000;
+  border-radius: 0;
+  padding: 11px 25px;
+}
+
+.button:hover {
+  background-color: #222222;
+  color: white;
+}
+
+.detalleProducto {
+  border-radius: 8px;
+  font-size: 14px;
+  padding: 24px 16px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  max-width: 318px;
+  margin: 10px;
+  float: right;
+}
+
+.fa-cart-plus {
+  background: #0652dd;
+}
+
+.error {
+  color: rgba(255, 0, 0, 0.671);
+  font-weight: 600;
+}
+.addtocart {
+  display: block;
+  border: none;
+  position: relative;
+
+  width: 100%;
+}
+
+.pretext {
+  color: #fff;
+  margin-top: 5px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  font-size: 1em;
+  cursor: pointer;
+  background-color: black;
+}
+.pretext:hover {
+  color: #000;
+}
+
+.count {
+  margin-top: 30px;
+}
+
+.number {
+  margin: 100px;
+}
+.precio {
+  font-weight: 500;
+  font-size: 2rem;
+}
+.space {
+  height: 50px;
+}
+.title {
+  font-weight: 600;
+  font-size: 20px;
+}
+.minu,
+.plus {
+  align-self: center;
+  font-size: 25px;
+
+  font-weight: 500;
+  padding: 0 10px;
+  position: relative;
+  background: none;
+  border: none;
+  outline: 0 !important;
+  cursor: pointer;
+}
+.plus {
+  margin-right: 15px;
+}
+.addCart {
+  display: flex;
+  background-color: #f8f8f8;
+}
+.numberinput {
+  align-self: center;
+  width: 100px;
+  text-align: center;
+  font-size: 26px;
+
+  border-radius: 4px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.stockDisponible {
+  text-transform: uppercase;
+  font-size: 13px;
+  color: grey;
+
+  margin-top: 20px;
+}

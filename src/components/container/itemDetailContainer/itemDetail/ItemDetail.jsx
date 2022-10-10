@@ -1,57 +1,80 @@
 import { useState } from "react";
+import "./carrousel.css";
 import ItemCount from "./ItemCount";
 import { Link } from "react-router-dom";
- 
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from "react-responsive-carousel";
 import { useCartContext } from "../../../../context/CartContext";
-import "./css/itemDetail-style.css";
+import { baseURL } from "../../../../config/config";
+import styles from "./item.module.css";
 
 export const ItemDetail = ({ prod }) => {
   const { message, addItems, formatNumber } = useCartContext();
   const [inputType, setInputType] = useState("input");
   const product = prod.producto;
+  const precioVigente = product.oferta > 1 ? product.oferta : product.precio;
+  const precioRegular = product.oferta ? product.precio : "";
+  const descuento = product.oferta ? product.precio / product.oferta : 0;
+
   const onAdd = (count) => {
     addItems({ ...product, cantidad: count });
     setInputType("button");
   };
 
- 
   return (
-    <div className="col s12 m12 l12 flex" key={product.id}>
-      <div className="card">
-        <div className="card-image waves-effect waves-block waves-light">
-          <div className="col s12 m6 l6">
-            <div>
-              <img
-                alt={product.nombre}
-                className="imgDetail"
-                src={
-                  product.foto
-                    ? product.foto
-                    : "/assets/image/default-placeholder.png"
-                }
-              />
+    <div>
+      <div className="col s12 m12 l12" key={product.id}>
+        <div className="col s12 m6 l6">
+          <div>
+            <Carousel>
+              {product.foto.map((item) => (
+                <img
+                  src={baseURL + "/uploads/" + item.filename}
+                  className={styles.imgslider}
+                  alt={item.alt}
+                />
+              ))}
+            </Carousel>
+          </div>
+        </div>
+        <div className="col s12 m5 l5">
+          <h5 className="producto">{product.nombre}</h5>
+          <div className={styles.oferta}></div>
+
+          <p className={product.stock !== 0 ? styles.hide : styles.agotado}>
+            {product.stock === 0 ? "" : "AGOTADO"}
+          </p>
+          <div className={product.stock !== 0 ? styles.show : styles.hide}>
+            <span className={styles.precio}>{formatNumber(precioVigente)}</span>
+            <div className={product.oferta ? styles.desc : styles.hide}>
+              <span className={styles.descuento}>
+                {"-" + Math.round(descuento * 100 - 100) + "% "}
+              </span>
+              <span className={styles.precioRegular}>
+                {precioRegular !== "" ? formatNumber(product.precio) : ""}
+              </span>{" "}
             </div>
           </div>
-          <div className="col s12 m5 l5 detalleProducto">
-            <h5 className="producto">{product.nombre}</h5>
-            <span className="price">{formatNumber(product.precio)}</span>
-
+          <p className="producto">
+            {product.color ? `Color: ${product.color}` : ""}
+          </p>
+          <div className={styles.space}></div>
+          <div className={product.stock !== 0 ? styles.show : styles.hide}>
             {inputType === "input" ? (
               <ItemCount initial={1} stock={product.stock} onAdd={onAdd} />
             ) : (
-              <Link to="/cart" className="pretext comprar">
+              <Link to="/cart" className={styles.pretext}>
                 Ir a Carrito
               </Link>
             )}
-            <span className="stockDisponible">
+            <p className={styles.stockDisponible}>
               Stock Disponible: {product.stock}
-            </span>
-            <p className="error">{message}</p>
+            </p>
           </div>
-        </div>
-        <div className="m-20">
-          <h5>Descripción</h5>
-          {product.descripcion}
+          <p className={styles.error}>{message}</p>
+          <div className={styles.space}></div>
+          <h5 className={styles.title}>Descripción</h5>
+          <p>{product.descripcion}</p>
         </div>
       </div>
     </div>

@@ -55,6 +55,19 @@ export const CartContextProvider = ({ children }) => {
     }
   };
 
+  const discountItems = (items) => {
+    const checkExist = cartList.find((item) => item.id === items.id);
+
+    if (checkExist) {
+      let cantidadDescuento = checkExist.cantidad - 1;
+      console.log("cantidadNueva1", cantidadDescuento);
+      setCantidades((checkExist.cantidad = cantidadDescuento));
+      setCartList(cartList);
+
+      let stringCart = JSON.stringify(cartList);
+      localStorage.setItem("cart", stringCart);
+    }
+  };
   const itemsCart = () => {
     return cartList.reduce((prev, next) => prev + next.cantidad, 0);
   };
@@ -71,11 +84,10 @@ export const CartContextProvider = ({ children }) => {
   };
   const precioTotal = () => {
     return cartList.reduce(
-      (prev, next) => prev + next.cantidad * next.precio,
+      (prev, next) => prev +( next.oferta>0? next.cantidad * next.oferta :next.cantidad * next.precio),
       0
     );
   };
-
   // const [inputType, setInputType] = useState("input");
 
   const [detalleOrden, guardarDetalle] = useState();
@@ -91,9 +103,10 @@ export const CartContextProvider = ({ children }) => {
         guardarDetalle,
         addItems,
         deleteItem,
+        precioTotal,
+        discountItems,
         deleteAll,
         formatNumber,
-        precioTotal,
       }}
     >
       {children}

@@ -1,0 +1,26 @@
+.tituloPrincipal{
+  background-color: #f1f1f1;
+  font-weight: 700;
+  text-align: center;
+  width: 100%;
+  display: inline-block;
+  font-size: 18px;
+  position: relative;
+  padding: 15px;
+}
+
+.textoGracias{
+    font-weight: 600;
+    text-align: center;
+}
+.espacio{
+    height: 30px;
+}
+.tituloSecundario{
+    font-weight: 600;
+    font-size: 19px;
+}
+ .totalOrden{
+    font-weight: 700;
+    font-size: 18px;
+ }
