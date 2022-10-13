@@ -20,18 +20,19 @@ export const ItemDetail = ({ prod }) => {
     addItems({ ...product, cantidad: count });
     setInputType("button");
   };
-
+ 
   return (
-    <div>
-      <div className="col s12 m12 l12" key={product.id}>
+    <div >
+      <div className="col s12 m12 l12" >
         <div className="col s12 m6 l6">
           <div>
             <Carousel>
-              {product.foto.map((item) => (
+              {product.foto.map((item,i) => (
                 <img
                   src={baseURL + "/uploads/" + item.filename}
                   className={styles.imgslider}
                   alt={item.alt}
+                  key={i}
                 />
               ))}
             </Carousel>

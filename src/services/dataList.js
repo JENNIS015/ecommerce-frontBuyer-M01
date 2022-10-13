@@ -4,6 +4,7 @@ class BaseService {
   constructor() {
     this.api = "/api/productos";
     this.categorias = "/categorias";
+    this.tendencia = "/api/productos/categoria/633eb05b3e8d3a9cff44378c";
     this.precios = "/precios";
     this.colores = "/colores";
     this.code = "/api/code";
@@ -28,6 +29,10 @@ class BaseService {
   }
   async getFeatures() {
     let url = `${baseURL}${this.features}`;
+    return await axios.get(`${url}`);
+  }
+  async getTrendy() {
+    let url = `${baseURL}${this.tendencia}`;
     return await axios.get(`${url}`);
   }
 

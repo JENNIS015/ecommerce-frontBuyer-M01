@@ -32,7 +32,7 @@ function App() {
         .finally(() => setLoading(false));
     };
     getData();
-    console.log("OBTENIENDO DATA.....")
+
   }, []);
 
   return (

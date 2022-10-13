@@ -21,19 +21,20 @@ const Form = ({ formData, setFormData, envio, precio, setPrecio }) => {
   const { cartList, precioTotal, formatNumber } = useCartContext();
   const [discount, setDiscount] = useState({ code: "" });
 
-  const [code, setCode] = useState(false);
+
   const [message, setMessage] = useState("");
+  
 
   const checkCode = () => {
     const codeList = [{ nombre: "ARS100", descuento: 0.1, mensaje: "10%" }];
     const check = codeList.filter((a) => a.nombre === discount.code);
 
     if (check.length) {
-      setCode(true);
+
       setPrecio((1 - check[0].descuento) * precioTotal());
       setMessage(`Descuento aplicado ${check[0].mensaje}`);
     } else {
-      setCode(false);
+
       setMessage("Codigo no vigente");
     }
   };
@@ -45,7 +46,7 @@ const Form = ({ formData, setFormData, envio, precio, setPrecio }) => {
           <h5>Datos de facturación</h5>
           <form onSubmit={envio}>
             <div className="col s12 m6 l6">
-              <label for="nombre">Nombre</label>
+              <label htmlFor="nombre">Nombre</label>
               <input
                 type="text"
                 className="form-control"
@@ -61,7 +62,7 @@ const Form = ({ formData, setFormData, envio, precio, setPrecio }) => {
               />
             </div>
             <div className="col s12 m6 l6">
-              <label for="apellido">Apellido</label>
+              <label htmlFor="apellido">Apellido</label>
               <input
                 type="text"
                 className="form-control"
@@ -79,7 +80,7 @@ const Form = ({ formData, setFormData, envio, precio, setPrecio }) => {
             </div>
 
             <div className="col s12 m12 l6">
-              <label for="email">Email</label>
+              <label htmlFor="email">Email</label>
               <input
                 type="email"
                 className="form-control"
@@ -95,7 +96,7 @@ const Form = ({ formData, setFormData, envio, precio, setPrecio }) => {
               />
             </div>
             <div className="col s12 m12 l6">
-              <label for="telefono">Telefono</label>
+              <label htmlFor="telefono">Telefono</label>
               <input
                 type="text"
                 className="form-control"
@@ -111,7 +112,7 @@ const Form = ({ formData, setFormData, envio, precio, setPrecio }) => {
               />
             </div>
             <div className="col s12 m12 l12">
-              <label for="direccion">Dirección</label>
+              <label htmlFor="direccion">Dirección</label>
               <input
                 type="text"
                 className="form-control"
@@ -127,7 +128,7 @@ const Form = ({ formData, setFormData, envio, precio, setPrecio }) => {
               />
             </div>
             <div className="col s12 m12 l4">
-              <label for="opcional">Opcional</label>
+              <label htmlFor="opcional">Opcional</label>
               <input
                 type="text"
                 className="form-control"
@@ -144,7 +145,7 @@ const Form = ({ formData, setFormData, envio, precio, setPrecio }) => {
             </div>
 
             <div className="col s12 m12 l4">
-              <label for="provincia">Provincia</label>
+              <label htmlFor="provincia">Provincia</label>
               <input
                 type="text"
                 className="form-control"
@@ -160,7 +161,7 @@ const Form = ({ formData, setFormData, envio, precio, setPrecio }) => {
               />
             </div>
             <div className="col s12 m12 l4">
-              <label for="zip">Codigo Postal</label>
+              <label htmlFor="zip">Codigo Postal</label>
               <input
                 type="text"
                 className="form-control"

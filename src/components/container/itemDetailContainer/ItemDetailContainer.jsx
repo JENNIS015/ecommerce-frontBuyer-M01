@@ -26,7 +26,7 @@ const ItemDetailContainer = () => {
     <div className="full">
       <div className="container">
         <div className="row">
-          <ItemDetail prod={productIndiv} />
+          <ItemDetail prod={productIndiv} key={id} />
         </div>
       </div>
     </div>

@@ -3,7 +3,7 @@ import EmptyView from "./EmpytView/EmptyView";
 
  
 const Container=(props)=> {
-console.log("-----",props)
+ 
   return (
     <div>
       {props.loading !== true ? (

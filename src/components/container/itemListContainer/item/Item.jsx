@@ -4,7 +4,7 @@ import ItemCount from "../../itemDetailContainer/itemDetail/ItemCount";
 import { useCartContext } from "../../../../context/CartContext";
 import { baseURL } from "../../../../config/config";
 import styles from "./item.module.css";
-const Item = ({ key, product, hide }) => {
+const Item = ({   product, hide }) => {
   const { addItems, formatNumber } = useCartContext();
   const [inputType, setInputType] = useState("input");
 
@@ -18,49 +18,51 @@ const Item = ({ key, product, hide }) => {
   const urlImagen = product.foto ? product.foto[0].filename : "default.jpg";
   const productId=product._id?product._id:product.id
   return (
-    <div key={key} className={styles.card}>
-      <Link to={`/item/${productId}`}>
-        <div>
-          <p className={product.stock === 0 ? styles.agotado : ""}>
-            {product.stock !== 0 ? "" : "AGOTADO"}
-          </p>
-          <p className={product.oferta ? styles.ribbon : styles.esconder}>
-            <span className={styles.text}>
-              {"-" + Math.round(descuento * 100 - 100) + "%"}
-            </span>
-          </p>
+    <div className="col s12 m4 l4">
+      <div  className={styles.card}>
+        <Link to={`/item/${productId}`}>
+          <div>
+            <p className={product.stock === 0 ? styles.agotado : ""}>
+              {product.stock !== 0 ? "" : "AGOTADO"}
+            </p>
+            <p className={product.oferta ? styles.ribbon : styles.esconder}>
+              <span className={styles.text}>
+                {"-" + Math.round(descuento * 100 - 100) + "%"}
+              </span>
+            </p>
 
-          <img
-            alt={product.nombre}
-            className={product.stock !== 0 ? styles.image : styles.imageSold}
-            src={baseURL + "/uploads/" + urlImagen}
-          />
-        </div>
-
-        <div className={styles.content}>
-          <p className={styles.name}>{`${product.nombre.slice(0, 60)}`}</p>
-
-          <div className={styles.oferta}></div>
-          <div className={styles.price}>
-            <span className={styles.old}>
-              {precioRegular !== "" ? formatNumber(product.precio) : ""}
-            </span>
-            {formatNumber(precioVigente)}
+            <img
+              alt={product.nombre}
+              className={product.stock !== 0 ? styles.image : styles.imageSold}
+              src={baseURL + "/uploads/" + urlImagen}
+            />
           </div>
-        </div>
-      </Link>
-      {inputType === "input" ? (
-        <ItemCount
-          initial={1}
-          stock={product.stock}
-          onAdd={onAdd}
-          hide={hide}
-        />
-      ) : (
-        <Link to="/cart" className={styles.pretext}>
-          Ir a Carrito
+
+          <div className={styles.content}>
+            <p className={styles.name}>{`${product.nombre.slice(0, 60)}`}</p>
+
+            <div className={styles.oferta}></div>
+            <div className={styles.price}>
+              <span className={styles.old}>
+                {precioRegular !== "" ? formatNumber(product.precio) : ""}
+              </span>
+              {formatNumber(precioVigente)}
+            </div>
+          </div>
         </Link>
-      )}
+        {inputType === "input" ? (
+          <ItemCount
+            initial={1}
+            stock={product.stock}
+            onAdd={onAdd}
+            hide={hide}
+          />
+        ) : (
+          <Link to="/cart" className={styles.pretext}>
+            Ir a Carrito
+          </Link>
+        )}
+      </div>
     </div>
   );
 };

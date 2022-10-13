@@ -4,12 +4,8 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 
 const useStyles = makeStyles({
-  root: {
-    "&$checked": {
-      color: "#000",
-    },
-  },
-
+  
+ 
   wrap: {
     width: "100%",
     display: "flex",
@@ -30,12 +26,11 @@ function CheckboxProton({ color, changeChecked }) {
       <FormControlLabel
         classes={{
           label: classes.label,
-          root: classes.wrap,
+          
         }}
         control={
           <Checkbox
-            classes={{
-              checked: classes.checked,
+            classes={{   
               root: classes.root,
             }}
             size="small"

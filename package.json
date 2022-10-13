@@ -2,6 +2,7 @@
   "name": "sanchez-jennifer",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://JENNIS015.github.io/ecommerce-frontBuyer-M01",
   "dependencies": {
     "@material-ui/icons": "^4.11.3",
     "@material-ui/lab": "^4.0.0-alpha.61",

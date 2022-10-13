@@ -47,8 +47,8 @@ function GridFeatured( {product} ) {
  
       product ? (
       <Slider {...settings}>
-        {product.map((a) => (
-          <Item key={a.id} product={a} hide={true} />
+        {product.map((a,i) => (
+          <Item key={i} product={a} hide={true} />
         ))}
       </Slider>
       ) : (

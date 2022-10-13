@@ -1,6 +1,7 @@
 import { React, useState, useEffect } from "react";
 import "../itemListContainer/css/itemListContainer.css";
 import List from "./list/List";
+import Loading from "../../loading/Loading"
 import { useParams } from "react-router-dom";
 import EmptyView from "../EmpytView/EmptyView";
 import Searchbar from "../../filter/SearchBar/SearchBar";
@@ -12,14 +13,13 @@ export const ItemListContainer = (props) => {
   const data = props.items;
   const [list, setList] = useState(data);
   const [coloresBD, setColoresBD] = useState([]);
-  const [color, setcolors] = useState( coloresBD?coloresBD : null);
+  const [color, setcolors] = useState(coloresBD ? coloresBD : null);
   const [preciosBD, setPreciosBD] = useState([10000]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const getData = async () => {
       await BaseService.getColors().then((res) => {
- 
         setColoresBD(res.data);
       });
 
@@ -31,9 +31,7 @@ export const ItemListContainer = (props) => {
         .finally(() => setLoading(false));
     };
     getData();
-  }, []);
- 
-
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
   const priceList = {
     min: 0,
     max: Math.max(...preciosBD),
@@ -53,14 +51,13 @@ export const ItemListContainer = (props) => {
     }
   };
 
-const handleChangeChecked = (id) => {
- 
-  const changeCheckedcolor = coloresBD.map((item) =>
-    item.id === id ? { ...item, checked: !item.checked } : item
-  );
+  const handleChangeChecked = (id) => {
+    const changeCheckedcolor = coloresBD.map((item) =>
+      item.id === id ? { ...item, checked: !item.checked } : item
+    );
 
-  setcolors(changeCheckedcolor);
-};
+    setcolors(changeCheckedcolor);
+  };
 
   const handleChangePrice = (event, value) => setPrice(value);
   const applyFilters = () => {
@@ -79,7 +76,7 @@ const handleChangeChecked = (id) => {
     //color Filter
     const colorChecked = color
       .filter((item) => item.checked)
-      .map((item) => item.nombre );
+      .map((item) => item.nombre);
 
     if (colorChecked.length) {
       updateList = updateList.filter((item) =>
@@ -112,9 +109,11 @@ const handleChangeChecked = (id) => {
 
   useEffect(() => {
     applyFilters();
-  }, [selectedCategory, color, selectedPrice, inputSearch, id]);
-
-  return (
+  }, [selectedCategory, color, selectedPrice, inputSearch, id])// eslint-disable-line react-hooks/exhaustive-deps
+ 
+  return loading === true ? (
+    <Loading />
+  ) : (
     <div className="home_panelList-wrap">
       <div className="home_penel-wrap">
         <Searchbar
@@ -138,4 +137,4 @@ const handleChangeChecked = (id) => {
       </div>
     </div>
   );
-};
+};;

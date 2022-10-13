@@ -60,7 +60,7 @@ export const CartContextProvider = ({ children }) => {
 
     if (checkExist) {
       let cantidadDescuento = checkExist.cantidad - 1;
-      console.log("cantidadNueva1", cantidadDescuento);
+ 
       setCantidades((checkExist.cantidad = cantidadDescuento));
       setCartList(cartList);
 

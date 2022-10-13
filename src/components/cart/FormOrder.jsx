@@ -6,7 +6,6 @@ import BaseService from "../../services/dataList";
 
 const FormOrder = () => {
   const { cartList, deleteAll, precioTotal } = useCartContext();
-  const [loading, setLoading] = useState(true);
   const [order, setOrder] = useState({});
   const [precio, setPrecio] = useState(precioTotal());
   const [formData, setFormData] = useState({
@@ -48,8 +47,7 @@ const FormOrder = () => {
     const doc = await BaseService.postOrden(orden);
     if (doc) {
       setOrder(doc.data.data);
-
-      setLoading(false);
+  
       setFormData({
         nombre: "",
         apellido: "",

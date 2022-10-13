@@ -14,7 +14,7 @@ const ImageSlider = ({ images }) => {
     slidesToScroll: 1,
     lazyLoad: true,
     autoplay: true,
-    autoplaySpeed: 2000,
+    autoplaySpeed: 3500,
   };
   return (
     <>
@@ -27,7 +27,7 @@ const ImageSlider = ({ images }) => {
                 <p className={styles.top}>{item.subtitle}</p>
                 <h1 className={styles.title}>{item.title}</h1>
                 <p className={styles.description}>{item.description}</p>
-                <a className={styles.button} href={item.link} tabindex="0">
+                <a className={styles.button} href={item.link} tabIndex="0">
                   {item.button}
                 </a>
               </div>

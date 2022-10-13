@@ -47,6 +47,7 @@ i {
 .quantity {
   display: flex;
   background-color: #f3f3f3;
+  width: 100px;
 }
 
 .numberinput {

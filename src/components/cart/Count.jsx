@@ -1,8 +1,7 @@
-import { useEffect } from "react";
 import { useState } from "react";
-import ItemCount from "../container/itemDetailContainer/itemDetail/ItemCount";
 import { useCartContext } from "../../context/CartContext";
 import styles from "./cart.module.css";
+
 function Count({ productos, checkout, sucess }) {
   const [count, setCount] = useState(productos.cantidad);
   const { formatNumber, addItems, discountItems } = useCartContext();

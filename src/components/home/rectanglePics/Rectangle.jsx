@@ -8,10 +8,9 @@ function Rectangle() {
     <div>
       <div className="row">
         <div className={styles.box}>
-    
-          {data.map((item) => (
-            <div className={styles.rectangle}>
-              <div className="col s12 m12 l6" key={item.id}>
+          {data.map((item, i) => (
+            <div className={styles.rectangle} key={i}>
+              <div className="col s12 m12 l6">
                 <div className={styles.card}>
                   <img
                     alt={item.nombre}

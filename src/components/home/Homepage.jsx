@@ -7,6 +7,7 @@ import Featured from "./featured/Featured";
 import ImageMessage from "./imageMessage/ImageMessage";
 import ShowIcons from "./icons/ShowIcons";
 
+
 const Homepage = () => {
   return (
     <div>
@@ -14,9 +15,10 @@ const Homepage = () => {
       <div className={styles.container}>
         <Rectangle />
         <Featured />
-      </div> 
+      </div>
       <ImageMessage />
       <ShowIcons />
+   
     </div>
   );
 };

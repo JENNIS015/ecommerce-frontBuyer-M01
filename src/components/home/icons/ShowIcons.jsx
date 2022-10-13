@@ -5,15 +5,12 @@ function ShowIcons() {
   return (
     <div className={styles.contenedor}>
       <div className="row">
-        {data.map((item) => (
-          <div className="col s12 m3 l3">
-            <div className={styles.box} key={item.id}>
-          
-                <img src={item.icons} className={styles.img} />
-      
-            
-                <h3 className={styles.text}>{item.text}</h3>
-              
+        {data.map((item, i) => (
+          <div className="col s12 m3 l3" key={i}>
+            <div className={styles.box}>
+              <img src={item.icons} alt={item.text} className={styles.img} />
+
+              <h3 className={styles.text}>{item.text}</h3>
             </div>
           </div>
         ))}
