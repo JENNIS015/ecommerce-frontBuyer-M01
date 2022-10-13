@@ -4,8 +4,9 @@
   "private": true,
   "homepage": "https://JENNIS015.github.io/ecommerce-frontBuyer-M01",
   "dependencies": {
-    "@material-ui/icons": "^4.11.3",
-    "@material-ui/lab": "^4.0.0-alpha.61",
+    "@mui/icons-material": "^5.10.9",
+    "@mui/material": "^5.10.9",
+    "@mui/styles": "^5.10.9",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",

@@ -1,11 +1,9 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
+import { makeStyles } from "@mui/styles";
+import { FormControlLabel, Checkbox } from "@mui/material";
+ 
 
 const useStyles = makeStyles({
-  
- 
   wrap: {
     width: "100%",
     display: "flex",
@@ -22,15 +20,14 @@ function CheckboxProton({ color, changeChecked }) {
   const classes = useStyles();
   const { checked, nombre, id } = color;
   return (
-   <div>
+    <div>
       <FormControlLabel
         classes={{
           label: classes.label,
-          
         }}
         control={
           <Checkbox
-            classes={{   
+            classes={{
               root: classes.root,
             }}
             size="small"
@@ -41,8 +38,6 @@ function CheckboxProton({ color, changeChecked }) {
         label={nombre}
       />
     </div>
-      
-    
   );
 }
 

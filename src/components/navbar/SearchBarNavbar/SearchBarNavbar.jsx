@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./SearchBar.css";
-import SearchIcon from "@material-ui/icons/Search";
-import CloseIcon from "@material-ui/icons/Close";
+import SearchIcon from "@mui/icons-material/Search";
+import CloseIcon from "@mui/icons-material/Close";
 import { frontEnd } from "../../../config/config";
 function SearchBarNavbar({ placeholder, data }) {
 
