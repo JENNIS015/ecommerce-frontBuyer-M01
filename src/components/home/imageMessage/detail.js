@@ -4,5 +4,5 @@ export const item = {
   image: "assets/image/section2/shopping.jpg",
   description: "Aprovecha las ofertas de ultima hora",
   button: "Descubrirlas",
-  link: "/productos",
+  link: "productos",
 };
