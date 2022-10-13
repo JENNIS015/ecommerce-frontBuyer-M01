@@ -9,7 +9,7 @@ export const data = [
   },
   {
     id: 2,
-    image: "/assets/image/section1/fashion2.jpg",
+    image: "assets/image/section1/fashion2.jpg",
     top: "Look casual",
     title: "Imperdibles ",
     button: "Descubrí",
