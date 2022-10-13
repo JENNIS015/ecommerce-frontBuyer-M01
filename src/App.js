@@ -32,26 +32,25 @@ function App() {
         .finally(() => setLoading(false));
     };
     getData();
-
   }, []);
 
   return (
     <div>
       <CartContextProvider>
-        <BrowserRouter>
+        <BrowserRouter basename={process.env.PUBLIC_URL}>
           <NavBar productos={productos} categorias={categorias} />
           <Switch>
             <Route exact path="/">
               <Homepage />
             </Route>
-            <Route exact path="/productos">
+            <Route path="/productos">
               <Container
                 productos={productos}
                 categorias={categorias}
                 loading={loading}
               />
             </Route>
-            <Route exact path="/categoria/:id">
+            <Route path="/categoria/:id">
               <Container
                 productos={productos}
                 categorias={categorias}
@@ -59,14 +58,13 @@ function App() {
               />
             </Route>
             <Route
-              exact
               path="/item/:id"
               loading={loading}
               component={ItemDetailContainer}
             />
-            <Route exact path="/cart" component={Cart} />
-            <Route exact path="/order" component={FormOrder} />
-            <Route exact path="/sucess" component={Sucess} />
+            <Route path="/cart" component={Cart} />
+            <Route path="/order" component={FormOrder} />
+            <Route path="/sucess" component={Sucess} />
           </Switch>
           <Footer categorias={categorias} />
         </BrowserRouter>
