@@ -1,2 +1,2 @@
-export const baseURL = process.env.BASEURL || "http://localhost:8080";
-export const frontEnd = process.env.FRONTEND || "http://localhost:3001";
+export const baseURL = "https://backend-ecommerce-sitem01.herokuapp.com";
+export const frontEnd = "https://JENNIS015.github.io/ecommerce-frontBuyer-M01";
