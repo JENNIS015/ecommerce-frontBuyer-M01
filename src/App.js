@@ -35,41 +35,40 @@ function App() {
   }, []);
 
   return (
- 
-      <CartContextProvider>
-        <BrowserRouter basename={process.env.PUBLIC_URL}>
-          <NavBar productos={productos} categorias={categorias} />
-          <Switch>
-            <Route exact path="/">
-              <Homepage />
-            </Route>
-            <Route path="/productos">
-              <Container
-                productos={productos}
-                categorias={categorias}
-                loading={loading}
-              />
-            </Route>
-            <Route path="/categoria/:id">
-              <Container
-                productos={productos}
-                categorias={categorias}
-                loading={loading}
-              />
-            </Route>
-            <Route
-              path="/item/:id"
+    <CartContextProvider>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
+        <NavBar productos={productos} categorias={categorias} />
+        <Switch>
+          <Route exact path="/">
+            <Homepage />
+          </Route>
+          <Route exact path="/productos">
+            <Container
+              productos={productos}
+              categorias={categorias}
               loading={loading}
-              component={ItemDetailContainer}
             />
-            <Route path="/cart" component={Cart} />
-            <Route path="/order" component={FormOrder} />
-            <Route path="/sucess" component={Sucess} />
-          </Switch>
-          <Footer categorias={categorias} />
-        </BrowserRouter>
-      </CartContextProvider>
- 
+          </Route>
+          <Route exact path="/categoria/:id">
+            <Container
+              productos={productos}
+              categorias={categorias}
+              loading={loading}
+            />
+          </Route>
+          <Route
+            exact
+            path="/item/:id"
+            loading={loading}
+            component={ItemDetailContainer}
+          />
+          <Route exact path="/cart" component={Cart} />
+          <Route exact path="/order" component={FormOrder} />
+          <Route exact path="/sucess" component={Sucess} />
+        </Switch>
+        <Footer categorias={categorias} />
+      </BrowserRouter>
+    </CartContextProvider>
   );
 }
 
