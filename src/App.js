@@ -35,7 +35,7 @@ function App() {
   }, []);
 
   return (
-    <div>
+ 
       <CartContextProvider>
         <BrowserRouter basename={process.env.PUBLIC_URL}>
           <NavBar productos={productos} categorias={categorias} />
@@ -69,7 +69,7 @@ function App() {
           <Footer categorias={categorias} />
         </BrowserRouter>
       </CartContextProvider>
-    </div>
+ 
   );
 }
 
