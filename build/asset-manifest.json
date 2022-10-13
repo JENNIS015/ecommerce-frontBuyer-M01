@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/ecommerce-frontBuyer-M01/static/css/main.19cf641c.chunk.css",
+    "main.js": "/ecommerce-frontBuyer-M01/static/js/main.919a9360.chunk.js",
+    "main.js.map": "/ecommerce-frontBuyer-M01/static/js/main.919a9360.chunk.js.map",
+    "runtime-main.js": "/ecommerce-frontBuyer-M01/static/js/runtime-main.0dab62da.js",
+    "runtime-main.js.map": "/ecommerce-frontBuyer-M01/static/js/runtime-main.0dab62da.js.map",
+    "static/css/2.949ffc4b.chunk.css": "/ecommerce-frontBuyer-M01/static/css/2.949ffc4b.chunk.css",
+    "static/js/2.c517f911.chunk.js": "/ecommerce-frontBuyer-M01/static/js/2.c517f911.chunk.js",
+    "static/js/2.c517f911.chunk.js.map": "/ecommerce-frontBuyer-M01/static/js/2.c517f911.chunk.js.map",
+    "static/js/3.1d977937.chunk.js": "/ecommerce-frontBuyer-M01/static/js/3.1d977937.chunk.js",
+    "static/js/3.1d977937.chunk.js.map": "/ecommerce-frontBuyer-M01/static/js/3.1d977937.chunk.js.map",
+    "index.html": "/ecommerce-frontBuyer-M01/index.html",
+    "static/css/2.949ffc4b.chunk.css.map": "/ecommerce-frontBuyer-M01/static/css/2.949ffc4b.chunk.css.map",
+    "static/css/main.19cf641c.chunk.css.map": "/ecommerce-frontBuyer-M01/static/css/main.19cf641c.chunk.css.map",
+    "static/js/2.c517f911.chunk.js.LICENSE.txt": "/ecommerce-frontBuyer-M01/static/js/2.c517f911.chunk.js.LICENSE.txt",
+    "static/media/slick-theme.css": "/ecommerce-frontBuyer-M01/static/media/slick.c94f7671.ttf"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.0dab62da.js",
+    "static/css/2.949ffc4b.chunk.css",
+    "static/js/2.c517f911.chunk.js",
+    "static/css/main.19cf641c.chunk.css",
+    "static/js/main.919a9360.chunk.js"
+  ]
+}
