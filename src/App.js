@@ -36,7 +36,7 @@ function App() {
 
   return ( 
     <CartContextProvider>
-      <BrowserRouter basename={"/ecommerce-frontbuyer-m01"}>
+      <BrowserRouter>
         <NavBar productos={productos} categorias={categorias} />
         <Switch>
           <Route exact path="/">

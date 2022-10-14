@@ -36,13 +36,11 @@
   font-weight: 400;
   font-size: 36px;
 }
-.button {
+.button,.pretext {
   width: 100%;
-
   margin: 0;
   line-height: 1;
   cursor: pointer;
-
   background-color: #222222;
   color: #fff;
   font-size: 14px;
@@ -57,6 +55,14 @@
   background-color: #222222;
   color: white;
 }
+.button:hover {
+  background-color: rgb(57, 57, 57);
+  color: white;
+}
+
+ 
+ 
+
 
 .detalleProducto {
   border-radius: 8px;
@@ -84,22 +90,6 @@
   width: 100%;
 }
 
-.pretext {
-  color: #fff;
-  margin-top: 5px;
-  left: 0;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
-  font-size: 1em;
-  cursor: pointer;
-  background-color: black;
-}
-.pretext:hover {
-  color: #000;
-}
 
 .count {
   margin-top: 30px;
