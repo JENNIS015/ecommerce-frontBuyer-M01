@@ -1,25 +1,27 @@
 import React, { useState } from "react";
-import "./Searchbar.css";
+import "./searchbar.css";
 import SearchIcon from "@mui/icons-material/Search";
 import CloseIcon from "@mui/icons-material/Close";
 import { frontEnd } from "../../../config/config";
 function SearchBarNavbar({ placeholder, data }) {
-
   const [filteredData, setFilteredData] = useState([]);
   const [wordEntered, setWordEntered] = useState("");
 
   const handleFilter = (event) => {
     const searchWord = event.target.value;
     setWordEntered(searchWord);
-    const newFilter = data.filter((item) => {
-      return (
-        item.nombre.toLowerCase().search(searchWord.toLowerCase().trim()) !==
-          -1 ||
-        item.descripcion
-          .toLowerCase()
-          .search(searchWord.toLowerCase().trim()) !== -1
-      );
-    });
+    const newFilter = data
+      ? data.filter((item) => {
+          return (
+            item.nombre
+              .toLowerCase()
+              .search(searchWord.toLowerCase().trim()) !== -1 ||
+            item.descripcion
+              .toLowerCase()
+              .search(searchWord.toLowerCase().trim()) !== -1
+          );
+        })
+      : "";
 
     if (searchWord === "") {
       setFilteredData([]);

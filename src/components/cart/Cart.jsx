@@ -6,7 +6,7 @@ import styles from "./cart.module.css";
 import { useHistory } from "react-router-dom";
 
 const Cart = () => {
-  const { cartList, deleteAll,  } = useCartContext();
+  const { cartList, deleteAll } = useCartContext();
   const history = useHistory();
 
   return (
@@ -32,9 +32,10 @@ const Cart = () => {
           </div>
         </>
       ) : (
-        <div className="container">
+        <div className={styles.cartEmpty}>
           <h3>Tu carrito está vacío</h3>
           <h5>¿No sabés qué comprar? ¡Miles de productos te esperan !</h5>
+          <div className={styles.space}></div>
           <Link to={`/productos`} className={styles.btn}>
             Ir a Productos
           </Link>

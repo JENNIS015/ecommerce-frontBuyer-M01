@@ -45,6 +45,7 @@ input:focus {
   width: inherit;
 }
 
+
 .dataResult::-webkit-scrollbar {
   display: none;
 }
@@ -76,8 +77,8 @@ a:hover {
     width: 350px;
   }
 }
-@media only screen and (max-width: 600) {
+@media only screen and (max-width: 600px) {
   .search {
-    width: auto;
+    width: 100%;
   }
 }

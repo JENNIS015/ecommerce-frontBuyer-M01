@@ -31,6 +31,7 @@ const CartItem = (props) => {
                 <td
                   className={!props.sucess === true ? styles.one : styles.hide}
                 >
+                  
                   <img
                     src={
                       baseURL +

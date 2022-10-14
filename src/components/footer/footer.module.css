@@ -11,13 +11,14 @@ footer{
   padding: 40px;
 }
 .area {
-  font-size: 19px;
+  font-size: 15px!important;
   position: relative;
   padding-bottom: 5px;
   font-size: 20px;
   margin-bottom: 15px;
   font-weight: 700;
   margin-top: 0;
+  text-transform: uppercase;
 }
 
 .area::before {
@@ -41,4 +42,11 @@ footer{
   text-align: center;
   width: 100%;
   color: var(--color-text-Copy);
+}
+
+@media only screen and (max-width: 600px) {
+  .area {
+    margin-top: 20px;
+    font-size: 12px!important;
+  }
 }
