@@ -34,9 +34,9 @@ function App() {
     getData();
   }, []);
 
-  return (
+  return ( 
     <CartContextProvider>
-      <BrowserRouter basename={process.env.PUBLIC_URL}>
+      <BrowserRouter basename={"/ecommerce-frontbuyer-m01"}>
         <NavBar productos={productos} categorias={categorias} />
         <Switch>
           <Route exact path="/">
