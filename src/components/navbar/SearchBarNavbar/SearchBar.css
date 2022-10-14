@@ -6,19 +6,21 @@
   border-bottom-right-radius: 1px !important;
   font-size: 18px !important;
   padding: 15px !important;
- margin: 0px!important;
+  margin: 0px !important;
   height: 1.5rem !important;
 }
-
+.search {
+  width: 500px;
+}
 .searchInputs {
   display: flex;
   margin-top: 10px;
 }
 
 .searchIcon {
- margin: 0px!important;
+  margin: 0px !important;
   width: 50px;
-  background-color:  var(--color-menuText);
+  background-color: var(--color-menuText);
   display: inline-flex;
   place-items: center;
 }
@@ -33,11 +35,14 @@ input:focus {
 
 .dataResult {
   margin-top: 5px;
- 
+  z-index: 2;
+  position: absolute;
+  width: 100%;
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   overflow: hidden;
   overflow-y: auto;
+  width: inherit;
 }
 
 .dataResult::-webkit-scrollbar {
@@ -65,4 +70,14 @@ a:hover {
 
 #clearBtn {
   cursor: pointer;
+}
+@media only screen and (min-width: 600px) and (max-width: 800px) {
+  .search {
+    width: 350px;
+  }
+}
+@media only screen and (max-width: 600) {
+  .search {
+    width: auto;
+  }
 }
