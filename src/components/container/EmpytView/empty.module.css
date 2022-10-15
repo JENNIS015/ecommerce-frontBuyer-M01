@@ -1,0 +1,10 @@
+.notFound{
+    color:black;
+ 
+}
+.emptyViewPort{
+      font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    padding: 50px;
+}

@@ -2,7 +2,8 @@ import FilterListToggle from "../../common/Filter/FilterListToggle";
 import CheckboxProton from "../../common/Filter/CheckBoxProton";
 import "./style.css";
 import SliderProton from "../../common/Filter/SliderProton";
-//import BaseService from "../../../services/dataList";
+
+
 const FilterPanel = ({
   selectedCategory,
   selectToggle,

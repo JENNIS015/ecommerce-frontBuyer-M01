@@ -1,58 +1,42 @@
 import { React, useState, useEffect } from "react";
 import "../itemListContainer/css/itemListContainer.css";
 import List from "./list/List";
-import Loading from "../../loading/Loading"
+import Loading from "../../loading/Loading";
 import { useParams } from "react-router-dom";
 import EmptyView from "../EmpytView/EmptyView";
 import Searchbar from "../../filter/SearchBar/SearchBar";
 import FilterPanel from "../../filter/FilterPanel/FilterPanel";
-
-import BaseService from "../../../services/dataList";
+ 
 export const ItemListContainer = (props) => {
+
   const { id } = useParams();
   const data = props.items;
   const [list, setList] = useState(data);
-  const [coloresBD, setColoresBD] = useState([]);
-  const [color, setcolors] = useState(coloresBD ? coloresBD : null);
-  const [preciosBD, setPreciosBD] = useState([10000]);
-  const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const getData = async () => {
-      await BaseService.getColors().then((res) => {
-        setColoresBD(res.data);
-      });
-
-      await BaseService.getPrices()
-        .then((res) => {
-          setPreciosBD(res.data.item);
-        })
-
-        .finally(() => setLoading(false));
-    };
-    getData();
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
-  const priceList = {
-    min: 0,
-    max: Math.max(...preciosBD),
-  };
+  const [color, setcolors] = useState(props.coloresBD);
+   const priceList = {
+     min: 0,
+     max: Math.max(...props.preciosBD),
+   };
 
   const [selectedCategory, setSelectedCategory] = useState(null);
-
+ 
   const [inputSearch, setInputSearch] = useState("");
   const [resoultFound, setResultsFound] = useState(false);
-  const [selectedPrice, setPrice] = useState([0, Math.max(...preciosBD)]);
+  const [selectedPrice, setPrice] = useState([0, Math.max(...props.preciosBD)]);
 
   const handleSelectCategory = (event, value) => {
     if (!value) {
       return null;
     } else {
-      return setSelectedCategory(value);
+      setSelectedCategory(value);
     }
   };
 
   const handleChangeChecked = (id) => {
-    const changeCheckedcolor = coloresBD.map((item) =>
+    const coloresList = props.coloresBD;
+
+    const changeCheckedcolor = coloresList.map((item) =>
       item.id === id ? { ...item, checked: !item.checked } : item
     );
 
@@ -74,14 +58,17 @@ export const ItemListContainer = (props) => {
     }
 
     //color Filter
-    const colorChecked = color
-      .filter((item) => item.checked)
-      .map((item) => item.nombre);
+    if(color){
+      const colorChecked = color
+        .filter((item) => item.checked)
+        .map((item) => item.nombre);
+ 
+      if (colorChecked.length) {
+        updateList = updateList.filter((item) =>
+          colorChecked.includes(item.color)
+        );
+      }
 
-    if (colorChecked.length) {
-      updateList = updateList.filter((item) =>
-        colorChecked.includes(item.color)
-      );
     }
     //Price
     const minPrice = selectedPrice[0];
@@ -109,9 +96,9 @@ export const ItemListContainer = (props) => {
 
   useEffect(() => {
     applyFilters();
-  }, [selectedCategory, color, selectedPrice, inputSearch, id])// eslint-disable-line react-hooks/exhaustive-deps
- 
-  return loading === true ? (
+  }, [selectedCategory, color, selectedPrice, inputSearch ]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  return props.loading === true ? (
     <Loading />
   ) : (
     <div className="home_panelList-wrap">
@@ -123,7 +110,7 @@ export const ItemListContainer = (props) => {
         <FilterPanel
           selectToggle={handleSelectCategory}
           selectedCategory={selectedCategory}
-          color={coloresBD}
+          color={color}
           changeChecked={handleChangeChecked}
           selectedPrice={selectedPrice}
           changePrice={handleChangePrice}
@@ -137,4 +124,4 @@ export const ItemListContainer = (props) => {
       </div>
     </div>
   );
-};;
+};
