@@ -25,6 +25,7 @@
   place-items: center;
 }
 
+
 input:focus {
   outline: none;
 }
