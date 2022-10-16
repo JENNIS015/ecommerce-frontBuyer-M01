@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 import EmptyView from "../EmpytView/EmptyView";
 import Searchbar from "../../filter/SearchBar/SearchBar";
 import FilterPanel from "../../filter/FilterPanel/FilterPanel";
- 
+
 export const ItemListContainer = (props) => {
 
   const { id } = useParams();
@@ -14,13 +14,18 @@ export const ItemListContainer = (props) => {
   const [list, setList] = useState(data);
 
   const [color, setcolors] = useState(props.coloresBD);
-   const priceList = {
-     min: 0,
-     max: Math.max(...props.preciosBD),
-   };
+  const [priceMax, setMax] = useState(props.preciosBD);
+  const priceList = {
+    min: 0,
+    max: Math.max(...priceMax),
+  };
 
+  useEffect(() => {
+    setcolors(props.coloresBD);
+    setMax(props.preciosBD);
+  }, [data]);
   const [selectedCategory, setSelectedCategory] = useState(null);
- 
+
   const [inputSearch, setInputSearch] = useState("");
   const [resoultFound, setResultsFound] = useState(false);
   const [selectedPrice, setPrice] = useState([0, Math.max(...props.preciosBD)]);
@@ -58,17 +63,16 @@ export const ItemListContainer = (props) => {
     }
 
     //color Filter
-    if(color){
+    if (color) {
       const colorChecked = color
         .filter((item) => item.checked)
         .map((item) => item.nombre);
- 
+
       if (colorChecked.length) {
         updateList = updateList.filter((item) =>
           colorChecked.includes(item.color)
         );
       }
-
     }
     //Price
     const minPrice = selectedPrice[0];
@@ -96,7 +100,7 @@ export const ItemListContainer = (props) => {
 
   useEffect(() => {
     applyFilters();
-  }, [selectedCategory, color, selectedPrice, inputSearch ]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [selectedCategory, color, selectedPrice, inputSearch]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return props.loading === true ? (
     <Loading />

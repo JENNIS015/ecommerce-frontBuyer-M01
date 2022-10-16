@@ -14,6 +14,7 @@ import FormOrder from "./components/cart/FormOrder";
 import BaseService from "./services/dataList";
 import NotFound from "./notFound/NotFound";
 import Loading from "./components/loading/Loading";
+import ContainerCategory from "./components/container/ContainerCategory";
 function App() {
   const [productos, setProducts] = useState(null);
   const [categorias, setCategorias] = useState(null);
@@ -23,12 +24,12 @@ function App() {
     const getData = async () => {
       await BaseService.getData()
         .then((res) => {
-          setProducts(res.data.product); 
-            setCategorias(
-              Array.from(
-                new Set(res.data.product.map((pValue) => pValue.categoria))
-              )
-            );
+          setProducts(res.data.product);
+          setCategorias(
+            Array.from(
+              new Set(res.data.product.map((pValue) => pValue.categoria))
+            )
+          );
         })
         .catch(() => setLoading(true))
         .finally(() => setLoading(false));
@@ -44,7 +45,7 @@ function App() {
             <NavBar productos={productos} categorias={categorias} />
             <Switch>
               <Route exact path="/">
-                <Homepage />
+                <Homepage productos={productos} loading={loading}/>
               </Route>
               <Route exact path="/productos">
                 <Container
@@ -54,11 +55,7 @@ function App() {
                 />
               </Route>
               <Route exact path="/categoria/:id">
-                <Container
-                  productos={productos}
-                  categorias={categorias}
-                  loading={loading}
-                />
+                <ContainerCategory productos={productos} loading={loading} />
               </Route>
               <Route
                 exact
@@ -74,7 +71,7 @@ function App() {
             <Footer categorias={categorias} />
           </>
         ) : (
-          <Loading/>
+          <Loading />
         )}
       </BrowserRouter>
     </CartContextProvider>

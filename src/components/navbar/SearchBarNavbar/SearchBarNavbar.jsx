@@ -47,7 +47,7 @@ function SearchBarNavbar({ placeholder, data }) {
         />
         <div className="searchIcon">
           {filteredData.length === 0 ? (
-            <SearchIcon />
+            <SearchIcon className="icon"/>
           ) : (
             <CloseIcon id="clearBtn" onClick={clearInput} />
           )}

@@ -17,7 +17,7 @@ const NavBar = (props) => {
         <div className="row">
           <div className="col s2 m3 l3">
             <NavLink to="/">
-              <span className="hide-on-small-only ">
+              <span className="hide-on-small-only">
                 <span className="led"> MARKET BA</span>
               </span>
             </NavLink>
@@ -29,13 +29,13 @@ const NavBar = (props) => {
               <i className="material-icons">menu</i>
             </NavLink>
           </div>
-          <div className="col s8 m7 l7">
+          <div className="col s9 m7 l7">
             <SearchBarNavbar
               placeholder="Ingresa un producto..."
               data={props.productos}
             />
           </div>
-          <div className="col s2 m2 l2">
+          <div className="col s1 m2 l2">
             <NavLink to="/cart">
               <CartWidget />
             </NavLink>

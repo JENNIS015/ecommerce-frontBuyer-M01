@@ -9,9 +9,7 @@ div.nav-wrapper .container {
   display: inline-flex;
 }
 .led {
-  color: var(--color-menuText);
-  margin-top: 15px;
-  font-weight: 900;
+  color:black
 }
 .Navbar ul li a:before {
   content: "";
@@ -101,4 +99,16 @@ nav ul a {
 
 .mayuscula {
   text-transform: uppercase;
+}
+
+
+.logoMobile{
+    margin-right:15px ;
+    color:white!important
+}
+
+@media only screen and (max-width: 601px){
+ nav a.sidenav-trigger{
+    display: none!important;
+  }
 }

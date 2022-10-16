@@ -10,32 +10,27 @@ const NavBarMobile = ({ categorias }) => {
   }, []);
 
   return (
-    <ul className='sidenav' id='mobile-demo'>
-      <li className='sidenav-header red lighten-2'>
-        <div className='row'>
-          <div className='col s4'>
-            <img
-              alt='logo'
-              src='https://img.icons8.com/fluency/48/000000/tesla-supercharger-pin.png'
-            />
-            <span className='white-text text-darken-2'>Bienvenido</span>
-          </div>
-        </div>
+    <ul className="sidenav" id="mobile-demo">
+      <li className="sidenav-header black lighten-2">
+        <NavLink exact to="/" className="logoMobile">
+          MARKET BA 
+        </NavLink>
       </li>
       <li>
-        <NavLink className="mayuscula" exact to='/'>
+        <NavLink exact to="/">
           Home
         </NavLink>
       </li>
       <li>
-        <NavLink className="mayuscula" exact to='/productos'>
+        <NavLink exact to="/productos">
           Todos
         </NavLink>
       </li>
-      { categorias? (categorias.map((catMenu) => (
-        <OpcionesMenu key={catMenu} nombre={catMenu} />
-       ))):""}
- 
+      {categorias
+        ? categorias.map((catMenu) => (
+            <OpcionesMenu key={catMenu} nombre={catMenu} />
+          ))
+        : ""}
     </ul>
   );
 };
