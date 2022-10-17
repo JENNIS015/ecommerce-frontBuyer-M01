@@ -72,7 +72,7 @@ function App() {
             </Switch>
             <Footer categorias={categorias} />
           </>
-        ) : err == true ? (
+        ) : err === true ? (
           <Error500 />
         ) : (
           <Loading />
