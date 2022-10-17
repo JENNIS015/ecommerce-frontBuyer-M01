@@ -18,7 +18,7 @@ import ContainerCategory from "./components/container/ContainerCategory";
 import Error500 from "./pageError/Error500";
 function App() {
   const [productos, setProducts] = useState(null);
-
+  const [err, setError] = useState(false);
   const [categorias, setCategorias] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -33,7 +33,7 @@ function App() {
             )
           );
         })
-        .catch(() => setLoading(true))
+        .catch(() => setError(true))
         .finally(() => setLoading(false));
     };
     getData();
@@ -42,7 +42,7 @@ function App() {
   return (
     <CartContextProvider>
       <BrowserRouter>
-        {loading !== true && productos!==null ? (
+        {loading !== true && productos !== null ? (
           <>
             <NavBar productos={productos} categorias={categorias} />
             <Switch>
@@ -72,8 +72,10 @@ function App() {
             </Switch>
             <Footer categorias={categorias} />
           </>
-        ) : (
+        ) : err == true ? (
           <Error500 />
+        ) : (
+          <Loading />
         )}
       </BrowserRouter>
     </CartContextProvider>
