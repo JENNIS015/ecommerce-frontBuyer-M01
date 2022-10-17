@@ -15,8 +15,10 @@ import BaseService from "./services/dataList";
 import NotFound from "./notFound/NotFound";
 import Loading from "./components/loading/Loading";
 import ContainerCategory from "./components/container/ContainerCategory";
+import Error500 from "./pageError/Error500";
 function App() {
   const [productos, setProducts] = useState(null);
+
   const [categorias, setCategorias] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -40,12 +42,12 @@ function App() {
   return (
     <CartContextProvider>
       <BrowserRouter>
-        {loading !== true ? (
+        {loading !== true && productos!==null ? (
           <>
             <NavBar productos={productos} categorias={categorias} />
             <Switch>
               <Route exact path="/">
-                <Homepage productos={productos} loading={loading}/>
+                <Homepage productos={productos} loading={loading} />
               </Route>
               <Route exact path="/productos">
                 <Container
@@ -71,7 +73,7 @@ function App() {
             <Footer categorias={categorias} />
           </>
         ) : (
-          <Loading />
+          <Error500 />
         )}
       </BrowserRouter>
     </CartContextProvider>

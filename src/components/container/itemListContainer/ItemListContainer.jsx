@@ -11,14 +11,13 @@ export const ItemListContainer = (props) => {
   const { id } = useParams();
   const data = props.items;
   const [list, setList] = useState(data);
-  const [priceMax, setMax] = useState(props.preciosBD);
+
   const [color, setcolors] = useState(props.coloresBD);
-  console.log(priceMax);
+
   const priceList = {
     min: 0,
-    max: Math.max(...priceMax),
+    max: Math.max(...props.preciosBD),
   };
-
   const cleanFilter = () => {
     setPrice([0, Math.max(...props.preciosBD)]);
     setcolors(props.coloresBD);
@@ -26,9 +25,10 @@ export const ItemListContainer = (props) => {
   };
 
   useEffect(() => {
-    cleanFilter()
-  }, [data, props.coloresBD, props.preciosBD]);
-  
+    cleanFilter();
+    // eslint-disable-next-line
+  }, [data, props.coloresBD, props.preciosBD]); 
+
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [inputSearch, setInputSearch] = useState("");
   const [resoultFound, setResultsFound] = useState(false);
