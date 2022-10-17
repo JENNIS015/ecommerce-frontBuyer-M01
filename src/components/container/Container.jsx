@@ -1,18 +1,18 @@
 import { ItemListContainer } from "./itemListContainer/ItemListContainer";
 import EmptyView from "./EmpytView/EmptyView";
-
+import { arrayColores, arrayPrecios } from "./functionsFilter";
 const Container = (props) => {
+
+ 
   return (
     <div>
-      {props.loading !== true ? (
+      {props.productos !== null ? (
         <ItemListContainer
           loading={props.loading}
           categorias={props.categorias}
           items={props.productos}
-          coloresBD={Array.from(
-            new Set(props.productos.map((pValue) => pValue.color))
-          ).map((nombre, i) => ({ nombre, checked: false, id: i }))}
-          preciosBD={props.productos.map((pValue) => pValue.precio)}
+          coloresBD={arrayColores(props.productos)}
+          preciosBD={arrayPrecios(props.productos)}
         />
       ) : (
         <EmptyView />

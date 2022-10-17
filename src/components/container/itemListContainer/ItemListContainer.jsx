@@ -23,7 +23,7 @@ export const ItemListContainer = (props) => {
   useEffect(() => {
     setcolors(props.coloresBD);
     setMax(props.preciosBD);
-  }, [data]);
+  }, [data, props.coloresBD, props.preciosBD]);
   const [selectedCategory, setSelectedCategory] = useState(null);
 
   const [inputSearch, setInputSearch] = useState("");
