@@ -8,24 +8,28 @@ import Searchbar from "../../filter/SearchBar/SearchBar";
 import FilterPanel from "../../filter/FilterPanel/FilterPanel";
 
 export const ItemListContainer = (props) => {
-
   const { id } = useParams();
   const data = props.items;
   const [list, setList] = useState(data);
-
-  const [color, setcolors] = useState(props.coloresBD);
   const [priceMax, setMax] = useState(props.preciosBD);
+  const [color, setcolors] = useState(props.coloresBD);
+  console.log(priceMax);
   const priceList = {
     min: 0,
     max: Math.max(...priceMax),
   };
 
-  useEffect(() => {
+  const cleanFilter = () => {
+    setPrice([0, Math.max(...props.preciosBD)]);
     setcolors(props.coloresBD);
-    setMax(props.preciosBD);
-  }, [data, props.coloresBD, props.preciosBD]);
-  const [selectedCategory, setSelectedCategory] = useState(null);
+    setSelectedCategory(null);
+  };
 
+  useEffect(() => {
+    cleanFilter()
+  }, [data, props.coloresBD, props.preciosBD]);
+  
+  const [selectedCategory, setSelectedCategory] = useState(null);
   const [inputSearch, setInputSearch] = useState("");
   const [resoultFound, setResultsFound] = useState(false);
   const [selectedPrice, setPrice] = useState([0, Math.max(...props.preciosBD)]);
@@ -83,8 +87,8 @@ export const ItemListContainer = (props) => {
         parseInt(item.precio) >= minPrice && parseInt(item.precio) <= maxPrice
     );
 
-    // //Search
     if (inputSearch) {
+      // //Search
       updateList = updateList.filter(
         (item) =>
           item.nombre.toLowerCase().search(inputSearch.toLowerCase().trim()) !==
@@ -121,6 +125,7 @@ export const ItemListContainer = (props) => {
           priceList={priceList}
           id={id}
           categorias={props.categorias}
+          clean={cleanFilter}
         />
       </div>
       <div className="home_list-wrap">

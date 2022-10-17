@@ -8,7 +8,7 @@ import ShowIcons from "./icons/ShowIcons";
 import Loading from "../loading/Loading";
 
 const Homepage = ({ loading, productos }) => {
-  return loading === true ? (
+  return loading === false ? (
     <div>
       <ImageSlider images={images} />
       <div className={styles.container}>

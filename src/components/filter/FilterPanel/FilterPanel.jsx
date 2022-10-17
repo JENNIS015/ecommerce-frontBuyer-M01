@@ -3,7 +3,6 @@ import CheckboxProton from "../../common/Filter/CheckBoxProton";
 import "./style.css";
 import SliderProton from "../../common/Filter/SliderProton";
 
-
 const FilterPanel = ({
   selectedCategory,
   selectToggle,
@@ -14,9 +13,8 @@ const FilterPanel = ({
   priceList,
   id,
   categorias,
+  clean,
 }) => {
- 
- 
   let categoriaNombre;
   !id ? (categoriaNombre = "Categoria") : (categoriaNombre = "");
   return (
@@ -49,14 +47,18 @@ const FilterPanel = ({
       {/* Checkbox*/}
       <div className="input-group">
         <p className="label">Color</p>
-        { color.map((choise) => (
-              <CheckboxProton
-                key={choise.id}
-                color={choise}
-                changeChecked={changeChecked}
-              />
-            ))
-        }
+        {color.map((choise) => (
+          <CheckboxProton
+            key={choise.id}
+            color={choise}
+            changeChecked={changeChecked}
+          />
+        ))}
+      </div>
+      <div className="input-group">
+        <button className="btn-black" onClick={()=>clean()}>
+          Limpiar Filtros
+        </button>
       </div>
     </div>
   );

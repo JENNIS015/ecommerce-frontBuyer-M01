@@ -6,11 +6,15 @@
 .input-group {
   margin-bottom: 2rem;
 }
-
+.btn-black {
+  background-color: black;
+  padding: 10px 20px;
+  width: 100%;
+  color: white;
+}
 .label-range {
   margin-bottom: 2.5rem;
 }
- .label-range:active {
-  color:white
+.label-range:active {
+  color: white;
 }
- 

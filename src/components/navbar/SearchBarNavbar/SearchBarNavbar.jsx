@@ -59,9 +59,10 @@ function SearchBarNavbar({ placeholder, data }) {
             return (
               <a
                 className="dataItem"
-                href={frontEnd + "/item/" + value.id}
+                href={"item/" + value.id}
                 target="_blank"
                 rel="noreferrer"
+                key={key}
               >
                 <p>{value.nombre} </p>
               </a>
