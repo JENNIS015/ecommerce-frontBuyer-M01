@@ -8,6 +8,7 @@ import ShowIcons from "./icons/ShowIcons";
 import Loading from "../loading/Loading";
 
 const Homepage = ({ loading, productos }) => {
+  console.log(productos.filter((obj) => obj.oferta > 0));
   return loading === false ? (
     <div>
       <ImageSlider images={images} />
@@ -24,6 +25,7 @@ const Homepage = ({ loading, productos }) => {
         title="Ofertas"
         featured={productos.filter((obj) => obj.oferta > 0)}
       />
+
     </div>
   ) : (
     <Loading />

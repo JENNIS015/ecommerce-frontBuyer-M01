@@ -8,10 +8,9 @@ import Item from "../../container/itemListContainer/item/Item";
  
 // import "./grid.css"
 function GridFeatured( {product} ) {
-
+ 
   const settings = {
     dots: false,
-    infinite: true,
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 4,
@@ -21,8 +20,7 @@ function GridFeatured( {product} ) {
         breakpoint: 1024,
         settings: {
           slidesToShow: 3,
-          slidesToScroll: 3,
-          infinite: true,
+          slidesToScroll: 1,
           dots: true,
         },
       },

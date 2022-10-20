@@ -18,7 +18,7 @@ const Item = ({   product, hide }) => {
   const urlImagen = product.foto ? product.foto[0].filename : "default.jpg";
   const productId=product._id?product._id:product.id
   return (
-    <div className="col s12 m4 l4">
+    <div className="col s12 m3 l3">
       <div  className={styles.card}>
         <Link to={`/item/${productId}`}>
           <div>
