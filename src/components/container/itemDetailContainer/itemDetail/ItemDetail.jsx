@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
 import { useCartContext } from "../../../../context/CartContext";
-import { baseURL } from "../../../../config/config";
+import { cloudinary } from "../../../../config/config";
 import styles from "./item.module.css";
 
 export const ItemDetail = ({ prod }) => {
@@ -20,16 +20,20 @@ export const ItemDetail = ({ prod }) => {
     addItems({ ...product, cantidad: count });
     setInputType("button");
   };
- 
+
   return (
-    <div >
-      <div className="col s12 m12 l12" >
+    <div>
+      <div className="col s12 m12 l12">
         <div className="col s12 m6 l6">
           <div>
             <Carousel>
-              {product.foto.map((item,i) => (
+              {product.foto.map((item, i) => (
                 <img
-                  src={baseURL + "/uploads/" + item.filename}
+                  src={`https://res.cloudinary.com/${
+                    cloudinary.id
+                  }/image/upload/${cloudinary.album}/${
+                    item ? item : "images_boqfzf"
+                  }.jpg`}
                   className={styles.imgslider}
                   alt={item.alt}
                   key={i}

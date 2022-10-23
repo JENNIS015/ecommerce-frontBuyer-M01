@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import ItemCount from "../../itemDetailContainer/itemDetail/ItemCount";
 import { useCartContext } from "../../../../context/CartContext";
-import { baseURL } from "../../../../config/config";
+import { cloudinary } from "../../../../config/config";
 import styles from "./item.module.css";
 const Item = ({   product, hide }) => {
   const { addItems, formatNumber } = useCartContext();
@@ -15,11 +15,11 @@ const Item = ({   product, hide }) => {
   const precioVigente = product.oferta > 1 ? product.oferta : product.precio;
   const precioRegular = product.oferta ? product.precio : "";
   const descuento = product.oferta ? product.precio / product.oferta : 0;
-  const urlImagen = product.foto ? product.foto[0].filename : "default.jpg";
+  const urlImagen = product.foto ? product.foto[0] : "images_boqfzf";
   const productId=product._id?product._id:product.id
   return (
     <div className="col s12 m3 l3">
-      <div  className={styles.card}>
+      <div className={styles.card}>
         <Link to={`/item/${productId}`}>
           <div>
             <p className={product.stock === 0 ? styles.agotado : ""}>
@@ -34,7 +34,7 @@ const Item = ({   product, hide }) => {
             <img
               alt={product.nombre}
               className={product.stock !== 0 ? styles.image : styles.imageSold}
-              src={baseURL + "/uploads/" + urlImagen}
+              src={`https://res.cloudinary.com/${cloudinary.id}/image/upload/${cloudinary.album}/${urlImagen}.jpg`}
             />
           </div>
 

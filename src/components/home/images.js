@@ -1,7 +1,7 @@
 const images = [
   {
     id: 1,
-    src: "assets/image/slider1.jpg",
+    src: "https://res.cloudinary.com/dcanlyqkj/image/upload/v1666548923/web/slider1_m9fmhq.jpg",
     alt: "Image 1",
     link: "productos",
     subtitle: "Nueva inspiración 2023",
@@ -11,7 +11,7 @@ const images = [
   },
   {
     id: 2,
-    src: "assets/image/slider2.jpg",
+    src: "https://res.cloudinary.com/dcanlyqkj/image/upload/v1666548923/web/slider2_nwbdwy.jpg",
     alt: "Image 2 ",
     link: "productos",
     subtitle: "Nueva inspiración 2023",

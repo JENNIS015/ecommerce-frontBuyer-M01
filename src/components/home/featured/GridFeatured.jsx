@@ -3,17 +3,17 @@ import Slider from "react-slick";
 import EmptyView from "../../container/EmpytView/EmptyView";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
- 
+
 import Item from "../../container/itemListContainer/item/Item";
- 
+
 // import "./grid.css"
-function GridFeatured( {product} ) {
- 
+function GridFeatured({ product }) {
   const settings = {
-    dots: false,
-    speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 4,
+    autoplay: true,
+    autoplaySpeed: 1500,
+    pauseOnHover: true,
+    slidesToShow: 3,
+    slidesToScroll: 1,
     initialSlide: 0,
     responsive: [
       {
@@ -21,15 +21,13 @@ function GridFeatured( {product} ) {
         settings: {
           slidesToShow: 3,
           slidesToScroll: 1,
-          dots: true,
         },
       },
       {
         breakpoint: 600,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 2,
           slidesToScroll: 1,
-
         },
       },
       {
@@ -41,18 +39,14 @@ function GridFeatured( {product} ) {
       },
     ],
   };
-  return (
- 
-      product ? (
-      <Slider {...settings}>
-        {product.map((a,i) => (
-          <Item key={i} product={a} hide={true} />
-        ))}
-      </Slider>
-      ) : (
-      <EmptyView />
-      ) 
- 
+  return product ? (
+    <Slider {...settings}>
+      {product.map((a, i) => (
+        <Item key={i} product={a} hide={true} />
+      ))}
+    </Slider>
+  ) : (
+    <EmptyView />
   );
 }
 
