@@ -26,16 +26,9 @@ export default function Footer(props) {
           </div>
           <div className="col l4 m4 s12">
             <h5 className={styles.area}>Contacto</h5>
-            <p className={styles.text}>
-              <i className="tiny material-icons">local_phone</i> 11-XXX-XXXX
-            </p>
-            <p className={styles.text}>
-              <i className="tiny material-icons">email</i> contacto@marketba.ar
-            </p>
-            <p className={styles.text}>
-              <i className="tiny material-icons">place</i> Av. Cantilo 000 -
-              Buenos Aires
-            </p>
+            <p className={styles.text}>11-XXX-XXXX</p>
+            <p className={styles.text}>contacto@marketba.ar</p>
+            <p className={styles.text}>Av. Cantilo 000 - Buenos Aires</p>
           </div>
         </div>
       </div>

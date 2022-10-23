@@ -29,6 +29,8 @@ export const ItemDetail = ({ prod }) => {
             <Carousel>
               {product.foto.map((item, i) => (
                 <img
+                  rel="preload"
+                  as="image"
                   src={`https://res.cloudinary.com/${
                     cloudinary.id
                   }/image/upload/${cloudinary.album}/${

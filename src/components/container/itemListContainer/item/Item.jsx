@@ -32,6 +32,8 @@ const Item = ({   product, hide }) => {
             </p>
 
             <img
+              rel="preload"
+              as="image"
               alt={product.nombre}
               className={product.stock !== 0 ? styles.image : styles.imageSold}
               src={`https://res.cloudinary.com/${cloudinary.id}/image/upload/w_300,f_auto,q_auto/${cloudinary.album}/${urlImagen}.jpg`}

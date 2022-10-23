@@ -29,7 +29,13 @@ const CartItem = (props) => {
             <tr key={i}>
               <td className={!props.sucess === true ? styles.one : styles.hide}>
                 <img
-                  src={`https://res.cloudinary.com/${cloudinary.id}/image/upload/${cloudinary.album}/${(prod.foto?prod.foto[0]:"images_boqfzf")}.jpg`}
+                  rel="preload"
+                  as="image"
+                  src={`https://res.cloudinary.com/${
+                    cloudinary.id
+                  }/image/upload/${cloudinary.album}/${
+                    prod.foto ? prod.foto[0] : "images_boqfzf"
+                  }.jpg`}
                   className={styles.imgCart}
                   alt={prod.nombre}
                 />

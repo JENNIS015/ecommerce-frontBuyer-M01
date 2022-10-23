@@ -22,7 +22,13 @@ const ImageSlider = ({ images }) => {
         <Slider {...settings}>
           {images.map((item) => (
             <div className={styles.hero} key={item.id}>
-              <img src={item.src} className={styles.imgslider} alt={item.alt} />
+              <img
+                src={item.src}
+                rel="preload"
+                as="image"
+                className={styles.imgslider}
+                alt={item.alt}
+              />
               <div className={styles.slideContent}>
                 <p className={styles.top}>{item.subtitle}</p>
                 <h1 className={styles.title}>{item.title}</h1>

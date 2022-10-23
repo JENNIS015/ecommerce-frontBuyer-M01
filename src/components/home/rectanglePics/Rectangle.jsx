@@ -13,6 +13,8 @@ function Rectangle() {
               <div className="col s12 m12 l6">
                 <div className={styles.card}>
                   <img
+                    rel="preload"
+                    as="image"
                     alt={item.nombre}
                     className={styles.image}
                     src={item.image}
