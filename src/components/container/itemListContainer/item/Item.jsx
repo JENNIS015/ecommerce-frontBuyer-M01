@@ -34,7 +34,7 @@ const Item = ({   product, hide }) => {
             <img
               alt={product.nombre}
               className={product.stock !== 0 ? styles.image : styles.imageSold}
-              src={`https://res.cloudinary.com/${cloudinary.id}/image/upload/${cloudinary.album}/${urlImagen}.jpg`}
+              src={`https://res.cloudinary.com/${cloudinary.id}/image/upload/w_300,f_auto,q_auto/${cloudinary.album}/${urlImagen}.jpg`}
             />
           </div>
 
