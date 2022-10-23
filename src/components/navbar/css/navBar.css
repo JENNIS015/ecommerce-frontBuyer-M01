@@ -107,8 +107,4 @@ nav ul a {
     color:white!important
 }
 
-@media only screen and (max-width: 601px){
- nav a.sidenav-trigger{
-    display: none!important;
-  }
-}
+ 

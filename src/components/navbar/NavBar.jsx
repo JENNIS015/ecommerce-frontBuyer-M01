@@ -3,6 +3,7 @@ import NavBarBrowser from "./NavBarBrowser";
 import NavBarMobile from "./NavBarMobile";
 import { NavLink } from "react-router-dom";
 import CartWidget from "./CartWidget";
+import MenuTwoToneIcon from "@mui/icons-material/MenuTwoTone";
 import SearchBarNavbar from "./SearchBarNavbar/SearchBarNavbar";
 import "./css/navBar.css";
 import TopBar from "./TopBar";
@@ -26,7 +27,7 @@ const NavBar = (props) => {
               data-target="mobile-demo"
               className="sidenav-trigger"
             >
-              <i className="material-icons">menu</i>
+              <MenuTwoToneIcon style={{ color: "black" }} />
             </NavLink>
           </div>
           <div className="col s9 m7 l7">
@@ -43,7 +44,6 @@ const NavBar = (props) => {
         </div>
 
         <BrowserView>
-    
           <NavBarBrowser categorias={props.categorias} />
         </BrowserView>
         <MobileView>

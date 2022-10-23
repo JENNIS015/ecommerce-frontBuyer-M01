@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { cloudinary } from "../../config/config";
 import styles from "./cart.module.css";
 import Count from "./Count";
-
+import DeleteOutlineTwoToneIcon from "@mui/icons-material/DeleteOutlineTwoTone";
 const CartItem = (props) => {
   const productos = props.productos;
 
@@ -69,7 +69,7 @@ const CartItem = (props) => {
                       deleteItem(prod.id);
                     }}
                   >
-                    <i className="tiny material-icons">delete</i>
+                    <DeleteOutlineTwoToneIcon/>
                   </button>
                 </td>
               )}

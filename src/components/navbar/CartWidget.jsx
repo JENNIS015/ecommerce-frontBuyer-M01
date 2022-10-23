@@ -1,16 +1,15 @@
 import React from "react";
 import { useCartContext } from "../../context/CartContext";
-
+import LocalMallTwoToneIcon from "@mui/icons-material/LocalMallTwoTone";
 const CartWidget = () => {
   const { itemsCart } = useCartContext();
 
   return (
     <div>
       <div className="iconCantidad">
-        <i className="large material-icons">shopping_cart</i>
+        <LocalMallTwoToneIcon />
 
         <div className={itemsCart() > 0 ? "mostrar" : "ocultar"}>
- 
           <span className="widgetCantidad">{itemsCart()}</span>
         </div>
       </div>
