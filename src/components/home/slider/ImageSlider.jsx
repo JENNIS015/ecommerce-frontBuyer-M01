@@ -23,9 +23,9 @@ const ImageSlider = ({ images }) => {
           {images.map((item) => (
             <div className={styles.hero} key={item.id}>
               <img
-                src={item.src}
                 rel="preload"
                 as="image"
+                src={item.src}
                 className={styles.imgslider}
                 alt={item.alt}
               />
